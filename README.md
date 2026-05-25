@@ -2,7 +2,6 @@
 
 VaultIQ is an Android-first Flutter app for private document question answering. It imports local files, chunks and indexes their text on-device, retrieves relevant passages, and sends only local context to the on-device answer engine.
 
-![VaultIQ screenshot](docs/images/vaultiq_emulator_screen.png)
 
 ## Features
 
