@@ -112,6 +112,65 @@ void main() {
     expect(names, contains('c.md'));
     expect(names.contains('a.md') && names.contains('b.md'), isFalse);
   });
+
+  test('reranking promotes exact number evidence over broad keyword overlap', () {
+    const ranker = RetrievalRanker(maxChunksPerDocument: 10);
+
+    final hits = ranker.rank(
+      query: 'Which bicycle counter recorded 1736 trips?',
+      candidates: [
+        _candidate(
+          documentName: 'generic_bicycle_report.md',
+          content:
+              'Bicycle counter recorded trips are summarized by corridor. '
+              'The bicycle counter program recorded daily trips and weekly trips. '
+              'BIKE-101 recorded 912 trips near the central bridge.',
+        ),
+        _candidate(
+          documentName: 'harbor_trail.md',
+          content:
+              'BIKE-603 / Harbor Trail recorded 1,736 trips. '
+              'Context: Evening peak.',
+        ),
+      ],
+      topK: 2,
+    );
+
+    expect(hits, isNotEmpty);
+    expect(hits.first.document.name, 'harbor_trail.md');
+  });
+
+  test(
+    'reranking promotes exact identifier evidence over stronger vector hit',
+    () {
+      const ranker = RetrievalRanker(maxChunksPerDocument: 10);
+
+      final hits = ranker.rank(
+        query: 'What upgrade is planned for PARK-102?',
+        queryEmbedding: const [1, 0],
+        candidates: [
+          _candidate(
+            documentName: 'park_overview.md',
+            content:
+                'PARK-101 has a planned accessibility upgrade for the north ramp. '
+                'The park program tracks planned upgrades across all districts.',
+            embedding: const [1, 0],
+          ),
+          _candidate(
+            documentName: 'public_parks_accessibility.pdf',
+            content:
+                'PARK-102 is in the West District. '
+                'Planned upgrade: Accessible picnic tables.',
+            embedding: const [0.7, 0.3],
+          ),
+        ],
+        topK: 2,
+      );
+
+      expect(hits, isNotEmpty);
+      expect(hits.first.document.name, 'public_parks_accessibility.pdf');
+    },
+  );
 }
 
 RetrievalCandidate _candidate({
