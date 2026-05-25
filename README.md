@@ -61,19 +61,3 @@ python tools/generate_public_test_docs.py
 
 Use `test_corpus/public_sample_docs/answer_key.csv` as the expected-answer list for manual or automated quality runs.
 
-## Release Signing
-
-Debug builds work without signing setup. For release builds, create an ignored `android/key.properties` file and point it at your keystore:
-
-```properties
-storePassword=...
-keyPassword=...
-keyAlias=...
-storeFile=C:\\path\\to\\release-keystore.jks
-```
-
-No model binaries, downloaded dependencies, generated databases, logs, or build outputs are intended to be committed.
-
-## License
-
-No open-source license has been selected yet.
