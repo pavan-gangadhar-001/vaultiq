@@ -1,0 +1,309 @@
+{
+  "name": "VaultIQ public sample document corpus",
+  "license_note": "Source status: Synthetic public test data. License note: CC0-style sample content created for local RAG testing. No private, personal, confidential, or operationally valid data is included.",
+  "file_count": 20,
+  "pdf_count": 10,
+  "docx_count": 10,
+  "files": [
+    {
+      "filename": "pdf_01_public_parks_accessibility.pdf",
+      "title": "Public Parks Accessibility Snapshot",
+      "kind": "pdf",
+      "questions": [
+        [
+          "Which district contains PARK-102?",
+          "West District"
+        ],
+        [
+          "What upgrade is planned for Sunrise Commons?",
+          "Accessible picnic tables"
+        ]
+      ]
+    },
+    {
+      "filename": "pdf_02_open_library_events.pdf",
+      "title": "Open Library Events Calendar",
+      "kind": "pdf",
+      "questions": [
+        [
+          "Where is EVT-211 held?",
+          "Civic Hall"
+        ],
+        [
+          "Which desk owns Local History Scan Day?",
+          "Collections Desk"
+        ]
+      ]
+    },
+    {
+      "filename": "pdf_03_recycling_pilot_results.pdf",
+      "title": "Neighborhood Recycling Pilot Results",
+      "kind": "pdf",
+      "questions": [
+        [
+          "Which zone had the best pilot score?",
+          "ZONE-B"
+        ],
+        [
+          "What was the diversion rate for textile drop boxes?",
+          "22%"
+        ]
+      ]
+    },
+    {
+      "filename": "pdf_04_space_mission_public_facts.pdf",
+      "title": "Public Space Mission Fact Cards",
+      "kind": "pdf",
+      "questions": [
+        [
+          "What year launched Voyager 1?",
+          "1977"
+        ],
+        [
+          "Where did Curiosity land?",
+          "Gale Crater"
+        ]
+      ]
+    },
+    {
+      "filename": "pdf_05_weather_station_readings.pdf",
+      "title": "Open Weather Station Readings",
+      "kind": "pdf",
+      "questions": [
+        [
+          "Which station had 48% humidity?",
+          "WX-502 / Civic Roof"
+        ],
+        [
+          "What wind speed was recorded at Botanic Gate?",
+          "5 km/h"
+        ]
+      ]
+    },
+    {
+      "filename": "pdf_06_health_workshop_schedule.pdf",
+      "title": "Community Health Workshop Schedule",
+      "kind": "pdf",
+      "questions": [
+        [
+          "Which department leads HLT-303?",
+          "Emergency Planning"
+        ],
+        [
+          "Where is Home Safety Basics scheduled?",
+          "Senior Center"
+        ]
+      ]
+    },
+    {
+      "filename": "pdf_07_transit_maintenance_notices.pdf",
+      "title": "Transit Maintenance Notices",
+      "kind": "pdf",
+      "questions": [
+        [
+          "What is the public impact for TRN-412?",
+          "Boarding shifted to Pier B"
+        ],
+        [
+          "Which team owns Blue Line signal inspection?",
+          "Track Team"
+        ]
+      ]
+    },
+    {
+      "filename": "pdf_08_heritage_site_notes.pdf",
+      "title": "Open Heritage Site Notes",
+      "kind": "pdf",
+      "questions": [
+        [
+          "What feature is listed for Market Clock Tower?",
+          "Four-faced clock and bell chamber"
+        ],
+        [
+          "Which site has an accessible overlook?",
+          "River Kiln Yard"
+        ]
+      ]
+    },
+    {
+      "filename": "pdf_09_microgrid_operating_log.pdf",
+      "title": "Renewable Microgrid Operating Log",
+      "kind": "pdf",
+      "questions": [
+        [
+          "Which asset generated 91 kWh?",
+          "Library rooftop"
+        ],
+        [
+          "What note is listed for GRID-802?",
+          "Blade inspection due"
+        ]
+      ]
+    },
+    {
+      "filename": "pdf_10_museum_collection_metadata.pdf",
+      "title": "Museum Collection Metadata Extract",
+      "kind": "pdf",
+      "questions": [
+        [
+          "What material is OBJ-3302 made from?",
+          "Steel"
+        ],
+        [
+          "Which room displays Harbor Sketchbook?",
+          "Gallery 2"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_01_public_bicycle_counter_report.docx",
+      "title": "Public Bicycle Counter Report",
+      "kind": "docx",
+      "questions": [
+        [
+          "Which bicycle counter recorded 1,736 trips?",
+          "BIKE-603 / Harbor Trail"
+        ],
+        [
+          "What context is listed for Museum Avenue?",
+          "Evening peak"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_02_public_art_inventory.docx",
+      "title": "Public Art Inventory",
+      "kind": "docx",
+      "questions": [
+        [
+          "What material is Listening Bench made from?",
+          "Bronze and oak"
+        ],
+        [
+          "Which artwork has UV coating due?",
+          "Signal Mural"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_03_school_garden_observation.docx",
+      "title": "School Garden Observation Log",
+      "kind": "docx",
+      "questions": [
+        [
+          "What action is recommended for GDN-111?",
+          "Check irrigation"
+        ],
+        [
+          "Which bed reported high bee activity?",
+          "Pollinator Bed"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_04_public_wifi_site_list.docx",
+      "title": "Public Wi-Fi Site List",
+      "kind": "docx",
+      "questions": [
+        [
+          "Which Wi-Fi site is available 24 hours?",
+          "Market Square"
+        ],
+        [
+          "What note is listed for WIFI-222?",
+          "Captive portal refreshed"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_05_public_tree_canopy_survey.docx",
+      "title": "Public Tree Canopy Survey",
+      "kind": "docx",
+      "questions": [
+        [
+          "Which tree needs pruning?",
+          "TREE-705 / Ginkgo"
+        ],
+        [
+          "What condition is listed for London plane?",
+          "Excellent"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_06_open_budget_training_examples.docx",
+      "title": "Open Budget Training Examples",
+      "kind": "docx",
+      "questions": [
+        [
+          "What amount is assigned to Heat response supplies?",
+          "$27,250"
+        ],
+        [
+          "Which budget item is still draft?",
+          "Park benches"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_07_public_market_vendor_directory.docx",
+      "title": "Public Market Vendor Directory",
+      "kind": "docx",
+      "questions": [
+        [
+          "Which vendor occupies Stall B2?",
+          "Clay Cup Studio"
+        ],
+        [
+          "What note is listed for River Greens?",
+          "Compost pickup"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_08_open_grant_award_summaries.docx",
+      "title": "Open Grant Award Summaries",
+      "kind": "docx",
+      "questions": [
+        [
+          "Which grant plans to train 400 residents?",
+          "Digital Navigator"
+        ],
+        [
+          "What is the status of Pocket Park Repair?",
+          "Pending"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_09_public_safety_drill_calendar.docx",
+      "title": "Public Safety Drill Calendar",
+      "kind": "docx",
+      "questions": [
+        [
+          "Where is the shelter setup drill?",
+          "Gym Annex"
+        ],
+        [
+          "Which drill tests alert routing?",
+          "Flood tabletop"
+        ]
+      ]
+    },
+    {
+      "filename": "docx_10_public_water_quality_summary.docx",
+      "title": "Public Water Quality Summary",
+      "kind": "docx",
+      "questions": [
+        [
+          "Which station has Watch status?",
+          "WQ-881 / Lake Outlet"
+        ],
+        [
+          "What turbidity is listed for South Inlet?",
+          "2.7 NTU"
+        ]
+      ]
+    }
+  ]
+}

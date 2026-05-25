@@ -1,0 +1,3206 @@
+{
+  "corpusPath": "/data/user/0/com.pavganga.localdocqa/app_flutter/local_doc_qa_eval_corpus.md",
+  "reportPath": "/data/user/0/com.pavganga.localdocqa/app_flutter/rag_quality_eval_report.md",
+  "chunkStats": {
+    "chunkCount": 38,
+    "minChars": 304,
+    "maxChars": 901,
+    "averageChars": 834.0,
+    "completeRecordCoverage": 1.0
+  },
+  "summary": {
+    "caseCount": 150,
+    "elapsedMs": 1031920,
+    "meanTotalScore": 0.3181666666666668,
+    "meanAnswerScore": 0.056666666666666664,
+    "retrievalHitRate": 1.0,
+    "citationRate": 0.31333333333333335
+  },
+  "results": [
+    {
+      "index": 1,
+      "id": "OWNER-CASE-001",
+      "category": "single-owner",
+      "question": "For CASE-001, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-001",
+      "requiredTerms": [
+        "Blue Harbor"
+      ],
+      "answer": "[notes.md]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#37",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 7025
+    },
+    {
+      "index": 2,
+      "id": "OWNER-CASE-002",
+      "category": "single-owner",
+      "question": "For CASE-002, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-002",
+      "requiredTerms": [
+        "Quartz Finance"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 1\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention w...\n\n[2] local_doc_qa_eval_corpus.md chunk 2\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention w...\n\n[3] local_doc_qa_eval_corpus.md chunk 25\nr 38 Record ID: CASE-038. Project codename: Ion Parser 38. Owner team: Aster Compliance. Approval path: security review. Primary region: Dublin. Deadline: 2026-03-07. Budget cap: $2986. Retention window: 31 days. Severity class: high. Operational note: when answering questions about CASE-038, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-039: Juniper Mesh 39 Record ID: CASE-039. Project codename: Juniper Mesh 39. Owner team: N...\n\n[4] local_doc_qa_eval_corpus.md chunk 25\nr 38 Record ID: CASE-038. Project codename: Ion Parser 38. Owner team: Aster Compliance. Approval path: security review. Primary region: Dublin. Deadline: 2026-03-07. Budget cap: $2986. Retention window: 31 days. Severity class: high. Operational note: when answering questions about CASE-038, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-039: Juniper Mesh 39 Record ID: CASE-039. Project codename: Juniper Mesh 39. Owner team: N...\n\n[5] local_doc_qa_eval_corpus.md chunk 25\nr 38 Record ID: CASE-038. Project codename: Ion Parser 38. Owner team: Aster Compliance. Approval path: security review. Primary region: Dublin. Deadline: 2026-03-07. Budget cap: $2986. Retention window: 31 days. Severity class: high. Operational note: when answering questions about CASE-038, use the exact owner, approval path, deadline, region, budget, retention window, and",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#2",
+        "local_doc_qa_eval_corpus.md#25"
+      ],
+      "elapsedMs": 36076
+    },
+    {
+      "index": 3,
+      "id": "OWNER-CASE-003",
+      "category": "single-owner",
+      "question": "For CASE-003, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-003",
+      "requiredTerms": [
+        "Cedar Security"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 2\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention w...\n\n[2] local_doc_qa_eval_corpus.md chunk 1\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention w...\n\n[3] local_doc_qa_eval_corpus.md chunk 25\nr 38 Record ID: CASE-038. Project codename: Ion Parser 38. Owner team: Aster Compliance. Approval path: security review. Primary region: Dublin. Deadline: 2026-03-07. Budget cap: $2986. Retention window: 31 days. Severity class: high. Operational note: when answering questions about CASE-038, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-039: Juniper Mesh 39 Record ID: CASE-039. Project codename: Juniper Mesh 39. Owner team: N...\n\n[4] local_doc_qa_eval_corpus.md chunk 2\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention w...\n\n[5] local_doc_qa_eval_corpus.md chunk 2\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention w...\n\n[6] local_doc_qa",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#2",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#25"
+      ],
+      "elapsedMs": 32908
+    },
+    {
+      "index": 4,
+      "id": "OWNER-CASE-004",
+      "category": "single-owner",
+      "question": "For CASE-004, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-004",
+      "requiredTerms": [
+        "Orbit Support"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 3]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#3",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#24"
+      ],
+      "elapsedMs": 5988
+    },
+    {
+      "index": 5,
+      "id": "OWNER-CASE-005",
+      "category": "single-owner",
+      "question": "For CASE-005, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-005",
+      "requiredTerms": [
+        "Lumen Data"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 3]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#3",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#4"
+      ],
+      "elapsedMs": 5782
+    },
+    {
+      "index": 6,
+      "id": "OWNER-CASE-006",
+      "category": "single-owner",
+      "question": "For CASE-006, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-006",
+      "requiredTerms": [
+        "Aster Compliance"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 4]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#4",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#27"
+      ],
+      "elapsedMs": 5840
+    },
+    {
+      "index": 7,
+      "id": "OWNER-CASE-007",
+      "category": "single-owner",
+      "question": "For CASE-007, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-007",
+      "requiredTerms": [
+        "Northstar Ops"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 4]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#5",
+        "local_doc_qa_eval_corpus.md#4",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4460
+    },
+    {
+      "index": 8,
+      "id": "OWNER-CASE-008",
+      "category": "single-owner",
+      "question": "For CASE-008, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-008",
+      "requiredTerms": [
+        "Neon Platform"
+      ],
+      "answer": "[owner_team] Granite Sync 6",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#5",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#3"
+      ],
+      "elapsedMs": 6083
+    },
+    {
+      "index": 9,
+      "id": "OWNER-CASE-009",
+      "category": "single-owner",
+      "question": "For CASE-009, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-009",
+      "requiredTerms": [
+        "Blue Harbor"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 6] [notes.md]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#6",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#22"
+      ],
+      "elapsedMs": 5914
+    },
+    {
+      "index": 10,
+      "id": "OWNER-CASE-010",
+      "category": "single-owner",
+      "question": "For CASE-010, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-010",
+      "requiredTerms": [
+        "Quartz Finance"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 1]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#6",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#7"
+      ],
+      "elapsedMs": 5766
+    },
+    {
+      "index": 11,
+      "id": "OWNER-CASE-011",
+      "category": "single-owner",
+      "question": "For CASE-011, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-011",
+      "requiredTerms": [
+        "Cedar Security"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 1]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#7",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#28"
+      ],
+      "elapsedMs": 5158
+    },
+    {
+      "index": 12,
+      "id": "OWNER-CASE-012",
+      "category": "single-owner",
+      "question": "For CASE-012, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-012",
+      "requiredTerms": [
+        "Orbit Support"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 8]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#8",
+        "local_doc_qa_eval_corpus.md#7",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4621
+    },
+    {
+      "index": 13,
+      "id": "OWNER-CASE-013",
+      "category": "single-owner",
+      "question": "For CASE-013, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-013",
+      "requiredTerms": [
+        "Lumen Data"
+      ],
+      "answer": "[owner team] Delta Archive 13",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#8",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 4815
+    },
+    {
+      "index": 14,
+      "id": "OWNER-CASE-014",
+      "category": "single-owner",
+      "question": "For CASE-014, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-014",
+      "requiredTerms": [
+        "Aster Compliance"
+      ],
+      "answer": "[owner team: Orbit Support, local_doc_qa_eval_corpus.md chunk 9]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#9",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 6915
+    },
+    {
+      "index": 15,
+      "id": "OWNER-CASE-015",
+      "category": "single-owner",
+      "question": "For CASE-015, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-015",
+      "requiredTerms": [
+        "Northstar Ops"
+      ],
+      "answer": "[owner team] CASE-015",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#10",
+        "local_doc_qa_eval_corpus.md#9",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5882
+    },
+    {
+      "index": 16,
+      "id": "OWNER-CASE-016",
+      "category": "single-owner",
+      "question": "For CASE-016, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-016",
+      "requiredTerms": [
+        "Neon Platform"
+      ],
+      "answer": "[Owner team: Granite Sync 16, Local Doc QA Evaluation Corpus.md chunk 11]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#10",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#11"
+      ],
+      "elapsedMs": 5484
+    },
+    {
+      "index": 17,
+      "id": "OWNER-CASE-017",
+      "category": "single-owner",
+      "question": "For CASE-017, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-017",
+      "requiredTerms": [
+        "Blue Harbor"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 1\neway 15 Record ID: CASE-015. Project codename: Frost Gateway 15. Owner team: Northstar Ops. Approval path: legal review. Primary region: Singapore. Deadline: 2026-07-19. Budget cap: $1905. Retention window: 29 days. Severity class: critical. Operational note: when answering questions about CASE-015, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. [2] local_doc_qa_eval_corpus.md chunk 1\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. [3] local_doc_qa_eval_corpus.md chunk 10\nal. Primary region: Seattle. Deadline: 2026-05-13. Budget cap: $1811. Retention window: 27 days. Severity class: medium. Operational note: when answering questions about CASE-013, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#11",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#10"
+      ],
+      "elapsedMs": 15814
+    },
+    {
+      "index": 18,
+      "id": "OWNER-CASE-018",
+      "category": "single-owner",
+      "question": "For CASE-018, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-018",
+      "requiredTerms": [
+        "Quartz Finance"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 1\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention window: 29 days. Severity class: critical. Operational note: when answering questions about CASE-001, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. [2] local_doc_qa_eval_corpus.md chunk 1\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention window: 29 days. Severity class: critical. Operational note: when answering questions about CASE-001, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. [3] local_doc_qa_eval_corpus.md chunk 12\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention window: 29 days. Severity class: critical. Operational note: when answering questions about CASE-001, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#11",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#12"
+      ],
+      "elapsedMs": 26313
+    },
+    {
+      "index": 19,
+      "id": "OWNER-CASE-019",
+      "category": "single-owner",
+      "question": "For CASE-019, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-019",
+      "requiredTerms": [
+        "Cedar Security"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 12]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#12",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#33"
+      ],
+      "elapsedMs": 5965
+    },
+    {
+      "index": 20,
+      "id": "OWNER-CASE-020",
+      "category": "single-owner",
+      "question": "For CASE-020, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-020",
+      "requiredTerms": [
+        "Orbit Support"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 13]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#13",
+        "local_doc_qa_eval_corpus.md#12",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6265
+    },
+    {
+      "index": 21,
+      "id": "OWNER-CASE-021",
+      "category": "single-owner",
+      "question": "For CASE-021, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-021",
+      "requiredTerms": [
+        "Lumen Data"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 13\nal. Primary region: Bengaluru. Deadline: 2026-01-01. Budget cap: $2046. Retention window: 32 days. Severity class: high. Operational note: when answering questions about CASE-018, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-019: Juniper Mesh 19 Record ID: CASE-019. Project codename: Juniper Mesh 19. Owner team: Cedar Security. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention window: 24 days. Severity class: low. Operational note: when answering questions about CASE-052, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-053: Delta Archive 53 Record ID: CASE-053. Project codename: Delta Archive 53. Owner team: Lumen Data. Approval path: incident commander approval. Primary region: Berlin. Deadline: 2026-09-25. Budget cap: $3644. Retention window: 24 days. Severity class: low. Operational note: when answering questions about CASE-052, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section.",
+      "retrievalScore": 1.0,
+      "answerScore": 1.0,
+      "citationScore": 1.0,
+      "totalScore": 1.0,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#13",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#34"
+      ],
+      "elapsedMs": 17185
+    },
+    {
+      "index": 22,
+      "id": "OWNER-CASE-022",
+      "category": "single-owner",
+      "question": "For CASE-022, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-022",
+      "requiredTerms": [
+        "Aster Compliance"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 14\nsection. ## CASE-022: Atlas Relay 22 Record ID: CASE-022. Project codename: Atlas Relay 22. Owner team: Orbit Support. Approval path: security review. Primary region: Dublin. Deadline: 2026-03-07. Budget cap: $2140. Retention window: 34 days. Severity class: low. Operational note: when answering questions about CASE-022, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#14",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 12300
+    },
+    {
+      "index": 23,
+      "id": "OWNER-CASE-023",
+      "category": "single-owner",
+      "question": "For CASE-023, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-023",
+      "requiredTerms": [
+        "Northstar Ops"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 14] section. ## CASE-023: Atlas Relay 23 Record ID: CASE-023. Project codename: Atlas Relay 23. Owner team: Orbit Support. Approval path: security review. Primary region: New York. Deadline: 2026-04-20. Budget cap: $2140. Retention window: 34 days. Severity class: low. Operational note: when answering questions about CASE-023, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#14",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#15"
+      ],
+      "elapsedMs": 9692
+    },
+    {
+      "index": 24,
+      "id": "OWNER-CASE-024",
+      "category": "single-owner",
+      "question": "For CASE-024, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-024",
+      "requiredTerms": [
+        "Neon Platform"
+      ],
+      "answer": "[owner_team=Cobalt Bridge 22, file=local_doc_qa_eval_corpus.md chunk 15]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#15",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#36"
+      ],
+      "elapsedMs": 5990
+    },
+    {
+      "index": 25,
+      "id": "OWNER-CASE-025",
+      "category": "single-owner",
+      "question": "For CASE-025, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-025",
+      "requiredTerms": [
+        "Blue Harbor"
+      ],
+      "answer": "[owner_team] [local_doc_qa_eval_corpus.md chunk 16]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#16",
+        "local_doc_qa_eval_corpus.md#15",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6484
+    },
+    {
+      "index": 26,
+      "id": "OWNER-CASE-026",
+      "category": "single-owner",
+      "question": "For CASE-026, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-026",
+      "requiredTerms": [
+        "Quartz Finance"
+      ],
+      "answer": "[owner team] Granite Sync 26",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#16",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#17"
+      ],
+      "elapsedMs": 5842
+    },
+    {
+      "index": 27,
+      "id": "OWNER-CASE-027",
+      "category": "single-owner",
+      "question": "For CASE-027, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-027",
+      "requiredTerms": [
+        "Cedar Security"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 17\nection. ## CASE-027: Frost Gateway 25 Record ID: CASE-027. Project codename: Frost Gateway 25. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-08-22. Budget cap: $2375. Retention window: 18 days. Severity class: medium. Operational note: when answering questions about CASE-027, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#17",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#25"
+      ],
+      "elapsedMs": 9847
+    },
+    {
+      "index": 28,
+      "id": "OWNER-CASE-028",
+      "category": "single-owner",
+      "question": "For CASE-028, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-028",
+      "requiredTerms": [
+        "Orbit Support"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 18]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#18",
+        "local_doc_qa_eval_corpus.md#17",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5451
+    },
+    {
+      "index": 29,
+      "id": "OWNER-CASE-029",
+      "category": "single-owner",
+      "question": "For CASE-029, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-029",
+      "requiredTerms": [
+        "Lumen Data"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 1]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#18",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 6750
+    },
+    {
+      "index": 30,
+      "id": "OWNER-CASE-030",
+      "category": "single-owner",
+      "question": "For CASE-030, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-030",
+      "requiredTerms": [
+        "Aster Compliance"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 19] local_doc_qa_eval_corpus.md chunk 18",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#19",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#18"
+      ],
+      "elapsedMs": 6275
+    },
+    {
+      "index": 31,
+      "id": "OWNER-CASE-031",
+      "category": "single-owner",
+      "question": "For CASE-031, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-031",
+      "requiredTerms": [
+        "Northstar Ops"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 21]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#19",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#20"
+      ],
+      "elapsedMs": 6325
+    },
+    {
+      "index": 32,
+      "id": "OWNER-CASE-032",
+      "category": "single-owner",
+      "question": "For CASE-032, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-032",
+      "requiredTerms": [
+        "Neon Platform"
+      ],
+      "answer": "[owner team: Aster Compliance, local_doc_qa_eval_corpus.md chunk 20]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#20",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#29"
+      ],
+      "elapsedMs": 5647
+    },
+    {
+      "index": 33,
+      "id": "OWNER-CASE-033",
+      "category": "single-owner",
+      "question": "For CASE-033, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-033",
+      "requiredTerms": [
+        "Blue Harbor"
+      ],
+      "answer": "[owner_team] [local_doc_qa_eval_corpus.md chunk 21]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#21",
+        "local_doc_qa_eval_corpus.md#20",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4688
+    },
+    {
+      "index": 34,
+      "id": "OWNER-CASE-034",
+      "category": "single-owner",
+      "question": "For CASE-034, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-034",
+      "requiredTerms": [
+        "Quartz Finance"
+      ],
+      "answer": "[owner_team] [local_doc_qa_eval_corpus.md chunk 22]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#21",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#22"
+      ],
+      "elapsedMs": 5073
+    },
+    {
+      "index": 35,
+      "id": "OWNER-CASE-035",
+      "category": "single-owner",
+      "question": "For CASE-035, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-035",
+      "requiredTerms": [
+        "Cedar Security"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 22]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 5744
+    },
+    {
+      "index": 36,
+      "id": "OWNER-CASE-036",
+      "category": "single-owner",
+      "question": "For CASE-036, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-036",
+      "requiredTerms": [
+        "Orbit Support"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 23]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#23"
+      ],
+      "elapsedMs": 6877
+    },
+    {
+      "index": 37,
+      "id": "OWNER-CASE-037",
+      "category": "single-owner",
+      "question": "For CASE-037, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-037",
+      "requiredTerms": [
+        "Lumen Data"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 23\nthe exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-037: Frost Gateway 37 Record ID: CASE-037. Project codename: Frost Gateway 37. Owner team: Cedar Security. Approval path: incident commander approval. Primary region: Berlin. Deadline: 2026-09-25. Budget cap: $2845. Retention window: 28 days. Severity class: critical. Operational note: when answering questions about CASE-037, use the exact owner, approval path, deadline, region, budget...\n\n[2] local_doc_qa_eval_corpus.md chunk 1\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention window: 28 days. Severity class: critical. Operational note: when answering questions about CASE-001, use the exact owner, approval path, deadline, region, budget...\n\n[3] local_doc_qa_eval_corpus.md chunk 15\nthe exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-022: Cobalt Bridge 22 Record ID: CASE-022. Project codename: Cobalt Bridge 22. Owner team: Aster Compliance. Approval path: data steward approval. Primary region: Toronto. Deadline: 2026-05-13. Budget cap: $2234. Retention window: 15 days. Severity class: high. Operational note: when answering questions about CASE-022, use the exact owner, approval path, deadline, region, budget...\n\nQuestion: For CASE-037, answer with only the owner team and cite the file.\nAnswer: Cedar Security",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#23",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#15"
+      ],
+      "elapsedMs": 23509
+    },
+    {
+      "index": 38,
+      "id": "OWNER-CASE-038",
+      "category": "single-owner",
+      "question": "For CASE-038, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-038",
+      "requiredTerms": [
+        "Aster Compliance"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 24]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#24",
+        "local_doc_qa_eval_corpus.md#23",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6407
+    },
+    {
+      "index": 39,
+      "id": "OWNER-CASE-039",
+      "category": "single-owner",
+      "question": "For CASE-039, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-039",
+      "requiredTerms": [
+        "Northstar Ops"
+      ],
+      "answer": "[Lumen Data]([notes.md])",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#24",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#3"
+      ],
+      "elapsedMs": 5261
+    },
+    {
+      "index": 40,
+      "id": "OWNER-CASE-040",
+      "category": "single-owner",
+      "question": "For CASE-040, answer with only the owner team and cite the file.",
+      "expectedRecordId": "CASE-040",
+      "requiredTerms": [
+        "Neon Platform"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 1]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#25",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#24"
+      ],
+      "elapsedMs": 5701
+    },
+    {
+      "index": 41,
+      "id": "DEADLINE-CASE-011",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-011? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-011",
+      "requiredTerms": [
+        "2026-03-07"
+      ],
+      "answer": "The exact deadline for CASE-011 is 2026-01-01.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#7",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#28"
+      ],
+      "elapsedMs": 5869
+    },
+    {
+      "index": 42,
+      "id": "DEADLINE-CASE-012",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-012? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-012",
+      "requiredTerms": [
+        "2026-04-10"
+      ],
+      "answer": "The exact deadline for CASE-012 is 2026-02-04.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#8",
+        "local_doc_qa_eval_corpus.md#7",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6075
+    },
+    {
+      "index": 43,
+      "id": "DEADLINE-CASE-013",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-013? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-013",
+      "requiredTerms": [
+        "2026-05-13"
+      ],
+      "answer": "The exact deadline for CASE-013 is 2026-04-10.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#8",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 7317
+    },
+    {
+      "index": 44,
+      "id": "DEADLINE-CASE-014",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-014? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-014",
+      "requiredTerms": [
+        "2026-06-16"
+      ],
+      "answer": "The exact deadline for CASE-014 is 2026-04-10.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#9",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 5118
+    },
+    {
+      "index": 45,
+      "id": "DEADLINE-CASE-015",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-015? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-015",
+      "requiredTerms": [
+        "2026-07-19"
+      ],
+      "answer": "The exact deadline for CASE-015 is 2026-05-13.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#10",
+        "local_doc_qa_eval_corpus.md#9",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5807
+    },
+    {
+      "index": 46,
+      "id": "DEADLINE-CASE-016",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-016? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-016",
+      "requiredTerms": [
+        "2026-08-22"
+      ],
+      "answer": "The exact deadline for CASE-016 is 2026-07-19.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#10",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#11"
+      ],
+      "elapsedMs": 6095
+    },
+    {
+      "index": 47,
+      "id": "DEADLINE-CASE-017",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-017? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-017",
+      "requiredTerms": [
+        "2026-09-25"
+      ],
+      "answer": "The exact deadline for CASE-017 is 2026-07-19.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#11",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#10"
+      ],
+      "elapsedMs": 6111
+    },
+    {
+      "index": 48,
+      "id": "DEADLINE-CASE-018",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-018? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-018",
+      "requiredTerms": [
+        "2026-01-01"
+      ],
+      "answer": "The exact deadline for CASE-018 is 2026-07-19.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#11",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#12"
+      ],
+      "elapsedMs": 8529
+    },
+    {
+      "index": 49,
+      "id": "DEADLINE-CASE-019",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-019? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-019",
+      "requiredTerms": [
+        "2026-02-04"
+      ],
+      "answer": "The exact deadline for CASE-019 is 2026-09-25.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#12",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#33"
+      ],
+      "elapsedMs": 7008
+    },
+    {
+      "index": 50,
+      "id": "DEADLINE-CASE-020",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-020? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-020",
+      "requiredTerms": [
+        "2026-03-07"
+      ],
+      "answer": "The exact deadline for CASE-020 is 2026-01-01.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#13",
+        "local_doc_qa_eval_corpus.md#12",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5946
+    },
+    {
+      "index": 51,
+      "id": "DEADLINE-CASE-021",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-021? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-021",
+      "requiredTerms": [
+        "2026-04-10"
+      ],
+      "answer": "The exact deadline for CASE-021 is 2026-03-07.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#13",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#14"
+      ],
+      "elapsedMs": 6150
+    },
+    {
+      "index": 52,
+      "id": "DEADLINE-CASE-022",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-022? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-022",
+      "requiredTerms": [
+        "2026-05-13"
+      ],
+      "answer": "The exact deadline for CASE-022 is 2026-03-07.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#14",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 6018
+    },
+    {
+      "index": 53,
+      "id": "DEADLINE-CASE-023",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-023? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-023",
+      "requiredTerms": [
+        "2026-06-16"
+      ],
+      "answer": "The exact deadline for CASE-023 is 2026-05-13.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#14",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#15"
+      ],
+      "elapsedMs": 6408
+    },
+    {
+      "index": 54,
+      "id": "DEADLINE-CASE-024",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-024? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-024",
+      "requiredTerms": [
+        "2026-07-19"
+      ],
+      "answer": "The exact deadline for CASE-024 is 2026-05-13.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#15",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#36"
+      ],
+      "elapsedMs": 6152
+    },
+    {
+      "index": 55,
+      "id": "DEADLINE-CASE-025",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-025? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-025",
+      "requiredTerms": [
+        "2026-08-22"
+      ],
+      "answer": "The exact deadline for CASE-025 is 2026-07-19.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#16",
+        "local_doc_qa_eval_corpus.md#15",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4994
+    },
+    {
+      "index": 56,
+      "id": "DEADLINE-CASE-026",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-026? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-026",
+      "requiredTerms": [
+        "2026-09-25"
+      ],
+      "answer": "The exact deadline for CASE-026 is 2026-08-22.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#16",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#17"
+      ],
+      "elapsedMs": 6369
+    },
+    {
+      "index": 57,
+      "id": "DEADLINE-CASE-027",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-027? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-027",
+      "requiredTerms": [
+        "2026-01-01"
+      ],
+      "answer": "The exact deadline for CASE-027 is 2026-08-22.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#17",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#25"
+      ],
+      "elapsedMs": 6616
+    },
+    {
+      "index": 58,
+      "id": "DEADLINE-CASE-028",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-028? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-028",
+      "requiredTerms": [
+        "2026-02-04"
+      ],
+      "answer": "The exact deadline for CASE-028 is 2026-09-25.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#18",
+        "local_doc_qa_eval_corpus.md#17",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6309
+    },
+    {
+      "index": 59,
+      "id": "DEADLINE-CASE-029",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-029? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-029",
+      "requiredTerms": [
+        "2026-03-07"
+      ],
+      "answer": "The exact deadline for CASE-029 is 2026-09-25.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#18",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 5945
+    },
+    {
+      "index": 60,
+      "id": "DEADLINE-CASE-030",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-030? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-030",
+      "requiredTerms": [
+        "2026-04-10"
+      ],
+      "answer": "The exact deadline for CASE-030 is 2026-02-04.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#19",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#18"
+      ],
+      "elapsedMs": 5930
+    },
+    {
+      "index": 61,
+      "id": "DEADLINE-CASE-031",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-031? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-031",
+      "requiredTerms": [
+        "2026-05-13"
+      ],
+      "answer": "The exact deadline for CASE-031 is 2026-04-10.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#19",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#20"
+      ],
+      "elapsedMs": 6614
+    },
+    {
+      "index": 62,
+      "id": "DEADLINE-CASE-032",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-032? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-032",
+      "requiredTerms": [
+        "2026-06-16"
+      ],
+      "answer": "The exact deadline for CASE-032 is 2026-04-10.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#20",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#29"
+      ],
+      "elapsedMs": 6893
+    },
+    {
+      "index": 63,
+      "id": "DEADLINE-CASE-033",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-033? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-033",
+      "requiredTerms": [
+        "2026-07-19"
+      ],
+      "answer": "The exact deadline for CASE-033 is 2026-05-13.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#21",
+        "local_doc_qa_eval_corpus.md#20",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5538
+    },
+    {
+      "index": 64,
+      "id": "DEADLINE-CASE-034",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-034? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-034",
+      "requiredTerms": [
+        "2026-08-22"
+      ],
+      "answer": "The exact deadline for CASE-034 is 2026-07-19.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#21",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#22"
+      ],
+      "elapsedMs": 5900
+    },
+    {
+      "index": 65,
+      "id": "DEADLINE-CASE-035",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-035? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-035",
+      "requiredTerms": [
+        "2026-09-25"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 22",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 4539
+    },
+    {
+      "index": 66,
+      "id": "DEADLINE-CASE-036",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-036? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-036",
+      "requiredTerms": [
+        "2026-01-01"
+      ],
+      "answer": "The exact deadline for CASE-036 is 2026-07-19.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#23"
+      ],
+      "elapsedMs": 5798
+    },
+    {
+      "index": 67,
+      "id": "DEADLINE-CASE-037",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-037? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-037",
+      "requiredTerms": [
+        "2026-02-04"
+      ],
+      "answer": "The exact deadline for CASE-037 is 2026-09-25.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#23",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#15"
+      ],
+      "elapsedMs": 6185
+    },
+    {
+      "index": 68,
+      "id": "DEADLINE-CASE-038",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-038? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-038",
+      "requiredTerms": [
+        "2026-03-07"
+      ],
+      "answer": "The exact deadline for CASE-038 is 2026-02-04.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#24",
+        "local_doc_qa_eval_corpus.md#23",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6297
+    },
+    {
+      "index": 69,
+      "id": "DEADLINE-CASE-039",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-039? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-039",
+      "requiredTerms": [
+        "2026-04-10"
+      ],
+      "answer": "The exact deadline for CASE-039 is 2026-01-01.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#24",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#3"
+      ],
+      "elapsedMs": 6334
+    },
+    {
+      "index": 70,
+      "id": "DEADLINE-CASE-040",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-040? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-040",
+      "requiredTerms": [
+        "2026-05-13"
+      ],
+      "answer": "The exact deadline for CASE-040 is 2026-03-07.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#25",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#24"
+      ],
+      "elapsedMs": 6077
+    },
+    {
+      "index": 71,
+      "id": "DEADLINE-CASE-041",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-041? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-041",
+      "requiredTerms": [
+        "2026-06-16"
+      ],
+      "answer": "The exact deadline for CASE-041 is 2026-05-13.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#25",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#26"
+      ],
+      "elapsedMs": 6651
+    },
+    {
+      "index": 72,
+      "id": "DEADLINE-CASE-042",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-042? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-042",
+      "requiredTerms": [
+        "2026-07-19"
+      ],
+      "answer": "The exact deadline for CASE-042 is 2026-05-13.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#26",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#28"
+      ],
+      "elapsedMs": 6168
+    },
+    {
+      "index": 73,
+      "id": "DEADLINE-CASE-043",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-043? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-043",
+      "requiredTerms": [
+        "2026-08-22"
+      ],
+      "answer": "The exact deadline for CASE-043 is 2026-06-16.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#27",
+        "local_doc_qa_eval_corpus.md#26",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5600
+    },
+    {
+      "index": 74,
+      "id": "DEADLINE-CASE-044",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-044? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-044",
+      "requiredTerms": [
+        "2026-09-25"
+      ],
+      "answer": "The exact deadline for CASE-044 is 2026-08-22.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#27",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#28"
+      ],
+      "elapsedMs": 7683
+    },
+    {
+      "index": 75,
+      "id": "DEADLINE-CASE-045",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-045? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-045",
+      "requiredTerms": [
+        "2026-01-01"
+      ],
+      "answer": "The exact deadline for CASE-045 is 2026-08-22.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#28",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 5245
+    },
+    {
+      "index": 76,
+      "id": "DEADLINE-CASE-046",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-046? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-046",
+      "requiredTerms": [
+        "2026-02-04"
+      ],
+      "answer": "The exact deadline for CASE-046 is 2026-09-25.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#29",
+        "local_doc_qa_eval_corpus.md#28",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 7155
+    },
+    {
+      "index": 77,
+      "id": "DEADLINE-CASE-047",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-047? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-047",
+      "requiredTerms": [
+        "2026-03-07"
+      ],
+      "answer": "The exact deadline for CASE-047 is 2026-02-04.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#29",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 6749
+    },
+    {
+      "index": 78,
+      "id": "DEADLINE-CASE-048",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-048? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-048",
+      "requiredTerms": [
+        "2026-04-10"
+      ],
+      "answer": "The exact deadline for CASE-048 is 2026-02-04.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#30",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 5523
+    },
+    {
+      "index": 79,
+      "id": "DEADLINE-CASE-049",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-049? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-049",
+      "requiredTerms": [
+        "2026-05-13"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 31\nl. Primary region: Berlin. Deadline: 2026-03-07. Budget cap: $3409. Retention window: 19 days. Severity class: critical. Operational note: when answering questions about CASE-047, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-048: Ion Parser 48 Record ID: CASE-048. Project codename: Ion Parser 48. Owner team: Neon Platform. Approval path: manager approval. Primary region: Bengaluru. Deadline: 2026-04-10. Budget cap: $3456. Retention window: 18 days. Severity class: high. Operational note: when answering questions about CASE-046, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-047: Helio Vault 47 Record ID: CASE-047. Project codename: Helio Vault 47. Owner team: Helio. Approval path: data steward approval. Primary region: Toronto. Deadline: 2026-02-04. Budget cap: $3362. Retention window: 18 days. Severity class: high. Operational note: when answering questions about CASE-046, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-048: Ion Parser 48 Record ID: CASE-048. Project codename: Ion Parser 48. Owner team: Neon Platform. Approval path: manager approval. Primary region: Bengaluru. Deadline: 2026-04-10. Budget cap: $3456. Retention window: 18 days. Severity class: high. Operational note: when answering questions about CASE-046, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#31",
+        "local_doc_qa_eval_corpus.md#30",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 25356
+    },
+    {
+      "index": 80,
+      "id": "DEADLINE-CASE-050",
+      "category": "single-deadline",
+      "question": "What is the exact deadline for CASE-050? Answer briefly and cite the file.",
+      "expectedRecordId": "CASE-050",
+      "requiredTerms": [
+        "2026-06-16"
+      ],
+      "answer": "The exact deadline for CASE-050 is 2026-03-07.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#31",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#29"
+      ],
+      "elapsedMs": 5788
+    },
+    {
+      "index": 81,
+      "id": "BUDGET-CASE-021",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-021? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-021",
+      "requiredTerms": [
+        "2187"
+      ],
+      "answer": "$2140",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#13",
+        "local_doc_qa_eval_corpus.md#14"
+      ],
+      "elapsedMs": 4619
+    },
+    {
+      "index": 82,
+      "id": "BUDGET-CASE-022",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-022? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-022",
+      "requiredTerms": [
+        "2234"
+      ],
+      "answer": "$2140",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#14",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 4631
+    },
+    {
+      "index": 83,
+      "id": "BUDGET-CASE-023",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-023? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-023",
+      "requiredTerms": [
+        "2281"
+      ],
+      "answer": "2234",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#14",
+        "local_doc_qa_eval_corpus.md#15"
+      ],
+      "elapsedMs": 5527
+    },
+    {
+      "index": 84,
+      "id": "BUDGET-CASE-024",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-024? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-024",
+      "requiredTerms": [
+        "2328"
+      ],
+      "answer": "$2234.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#15",
+        "local_doc_qa_eval_corpus.md#36"
+      ],
+      "elapsedMs": 5988
+    },
+    {
+      "index": 85,
+      "id": "BUDGET-CASE-025",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-025? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-025",
+      "requiredTerms": [
+        "2375"
+      ],
+      "answer": "$2328.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#16",
+        "local_doc_qa_eval_corpus.md#15"
+      ],
+      "elapsedMs": 4465
+    },
+    {
+      "index": 86,
+      "id": "BUDGET-CASE-026",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-026? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-026",
+      "requiredTerms": [
+        "2422"
+      ],
+      "answer": "$2375",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#16",
+        "local_doc_qa_eval_corpus.md#17"
+      ],
+      "elapsedMs": 4369
+    },
+    {
+      "index": 87,
+      "id": "BUDGET-CASE-027",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-027? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-027",
+      "requiredTerms": [
+        "2469"
+      ],
+      "answer": "$2375",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#17",
+        "local_doc_qa_eval_corpus.md#25"
+      ],
+      "elapsedMs": 5065
+    },
+    {
+      "index": 88,
+      "id": "BUDGET-CASE-028",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-028? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-028",
+      "requiredTerms": [
+        "2516"
+      ],
+      "answer": "$2469",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#17",
+        "local_doc_qa_eval_corpus.md#18"
+      ],
+      "elapsedMs": 4178
+    },
+    {
+      "index": 89,
+      "id": "BUDGET-CASE-029",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-029? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-029",
+      "requiredTerms": [
+        "2563"
+      ],
+      "answer": "$2422",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#18",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 5992
+    },
+    {
+      "index": 90,
+      "id": "BUDGET-CASE-030",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-030? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-030",
+      "requiredTerms": [
+        "2610"
+      ],
+      "answer": "$2469",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#19",
+        "local_doc_qa_eval_corpus.md#18"
+      ],
+      "elapsedMs": 5427
+    },
+    {
+      "index": 91,
+      "id": "BUDGET-CASE-031",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-031? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-031",
+      "requiredTerms": [
+        "2657"
+      ],
+      "answer": "$2610",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#19",
+        "local_doc_qa_eval_corpus.md#20"
+      ],
+      "elapsedMs": 5598
+    },
+    {
+      "index": 92,
+      "id": "BUDGET-CASE-032",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-032? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-032",
+      "requiredTerms": [
+        "2704"
+      ],
+      "answer": "$2610",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#20",
+        "local_doc_qa_eval_corpus.md#29"
+      ],
+      "elapsedMs": 3993
+    },
+    {
+      "index": 93,
+      "id": "BUDGET-CASE-033",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-033? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-033",
+      "requiredTerms": [
+        "2751"
+      ],
+      "answer": "$2704",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#21",
+        "local_doc_qa_eval_corpus.md#20"
+      ],
+      "elapsedMs": 4894
+    },
+    {
+      "index": 94,
+      "id": "BUDGET-CASE-034",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-034? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-034",
+      "requiredTerms": [
+        "2798"
+      ],
+      "answer": "$2751",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#21",
+        "local_doc_qa_eval_corpus.md#22"
+      ],
+      "elapsedMs": 4609
+    },
+    {
+      "index": 95,
+      "id": "BUDGET-CASE-035",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-035? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-035",
+      "requiredTerms": [
+        "2845"
+      ],
+      "answer": "$2657",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 4323
+    },
+    {
+      "index": 96,
+      "id": "BUDGET-CASE-036",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-036? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-036",
+      "requiredTerms": [
+        "2892"
+      ],
+      "answer": "2845",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#23"
+      ],
+      "elapsedMs": 6235
+    },
+    {
+      "index": 97,
+      "id": "BUDGET-CASE-037",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-037? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-037",
+      "requiredTerms": [
+        "2939"
+      ],
+      "answer": "$2845",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#23",
+        "local_doc_qa_eval_corpus.md#15"
+      ],
+      "elapsedMs": 5541
+    },
+    {
+      "index": 98,
+      "id": "BUDGET-CASE-038",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-038? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-038",
+      "requiredTerms": [
+        "2986"
+      ],
+      "answer": "2892",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#24",
+        "local_doc_qa_eval_corpus.md#23"
+      ],
+      "elapsedMs": 4827
+    },
+    {
+      "index": 99,
+      "id": "BUDGET-CASE-039",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-039? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-039",
+      "requiredTerms": [
+        "3033"
+      ],
+      "answer": "$293",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#24",
+        "local_doc_qa_eval_corpus.md#3"
+      ],
+      "elapsedMs": 4039
+    },
+    {
+      "index": 100,
+      "id": "BUDGET-CASE-040",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-040? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-040",
+      "requiredTerms": [
+        "3080"
+      ],
+      "answer": "$293",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#25",
+        "local_doc_qa_eval_corpus.md#24"
+      ],
+      "elapsedMs": 4727
+    },
+    {
+      "index": 101,
+      "id": "BUDGET-CASE-041",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-041? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-041",
+      "requiredTerms": [
+        "3127"
+      ],
+      "answer": "$3080",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#25",
+        "local_doc_qa_eval_corpus.md#26"
+      ],
+      "elapsedMs": 5250
+    },
+    {
+      "index": 102,
+      "id": "BUDGET-CASE-042",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-042? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-042",
+      "requiredTerms": [
+        "3174"
+      ],
+      "answer": "$3080",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#26",
+        "local_doc_qa_eval_corpus.md#28"
+      ],
+      "elapsedMs": 5674
+    },
+    {
+      "index": 103,
+      "id": "BUDGET-CASE-043",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-043? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-043",
+      "requiredTerms": [
+        "3221"
+      ],
+      "answer": "$3127",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#27",
+        "local_doc_qa_eval_corpus.md#26"
+      ],
+      "elapsedMs": 4939
+    },
+    {
+      "index": 104,
+      "id": "BUDGET-CASE-044",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-044? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-044",
+      "requiredTerms": [
+        "3268"
+      ],
+      "answer": "$3221",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#27",
+        "local_doc_qa_eval_corpus.md#28"
+      ],
+      "elapsedMs": 4296
+    },
+    {
+      "index": 105,
+      "id": "BUDGET-CASE-045",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-045? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-045",
+      "requiredTerms": [
+        "3315"
+      ],
+      "answer": "$3221",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#28",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 5173
+    },
+    {
+      "index": 106,
+      "id": "BUDGET-CASE-046",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-046? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-046",
+      "requiredTerms": [
+        "3362"
+      ],
+      "answer": "$3268",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#29",
+        "local_doc_qa_eval_corpus.md#28"
+      ],
+      "elapsedMs": 3953
+    },
+    {
+      "index": 107,
+      "id": "BUDGET-CASE-047",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-047? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-047",
+      "requiredTerms": [
+        "3409"
+      ],
+      "answer": "$3362",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#29",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 5323
+    },
+    {
+      "index": 108,
+      "id": "BUDGET-CASE-048",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-048? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-048",
+      "requiredTerms": [
+        "3456"
+      ],
+      "answer": "$3362",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#30",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 6250
+    },
+    {
+      "index": 109,
+      "id": "BUDGET-CASE-049",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-049? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-049",
+      "requiredTerms": [
+        "3503"
+      ],
+      "answer": "$3456",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#30",
+        "local_doc_qa_eval_corpus.md#31"
+      ],
+      "elapsedMs": 6185
+    },
+    {
+      "index": 110,
+      "id": "BUDGET-CASE-050",
+      "category": "numeric-budget",
+      "question": "What budget cap is listed for CASE-050? Answer with the amount only if possible.",
+      "expectedRecordId": "CASE-050",
+      "requiredTerms": [
+        "3550"
+      ],
+      "answer": "$3409",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#31",
+        "local_doc_qa_eval_corpus.md#29"
+      ],
+      "elapsedMs": 3927
+    },
+    {
+      "index": 111,
+      "id": "MULTI-CASE-001",
+      "category": "multi-field",
+      "question": "For CASE-001, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-001",
+      "requiredTerms": [
+        "finance director approval",
+        "Seattle"
+      ],
+      "answer": "CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle.",
+      "retrievalScore": 1.0,
+      "answerScore": 1.0,
+      "citationScore": 0.0,
+      "totalScore": 0.9,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#37",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 5874
+    },
+    {
+      "index": 112,
+      "id": "MULTI-CASE-003",
+      "category": "multi-field",
+      "question": "For CASE-003, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-003",
+      "requiredTerms": [
+        "legal review",
+        "Singapore"
+      ],
+      "answer": "CASE-003. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#2",
+        "local_doc_qa_eval_corpus.md#25",
+        "local_doc_qa_eval_corpus.md#22"
+      ],
+      "elapsedMs": 5999
+    },
+    {
+      "index": 113,
+      "id": "MULTI-CASE-005",
+      "category": "multi-field",
+      "question": "For CASE-005, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-005",
+      "requiredTerms": [
+        "incident commander approval",
+        "Berlin"
+      ],
+      "answer": "primary region: Toronto. approval path: data steward approval.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#3",
+        "local_doc_qa_eval_corpus.md#4",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6407
+    },
+    {
+      "index": 114,
+      "id": "MULTI-CASE-007",
+      "category": "multi-field",
+      "question": "For CASE-007, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-007",
+      "requiredTerms": [
+        "finance director approval",
+        "Seattle"
+      ],
+      "answer": "Primary region: Bengaluru. Approval path: manager approval.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#5",
+        "local_doc_qa_eval_corpus.md#4",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6060
+    },
+    {
+      "index": 115,
+      "id": "MULTI-CASE-009",
+      "category": "multi-field",
+      "question": "For CASE-009, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-009",
+      "requiredTerms": [
+        "legal review",
+        "Singapore"
+      ],
+      "answer": "[local_doc_qa_eval_corpus.md chunk 22] archive 33 Record ID: CASE-033. Project codename: Delta Archive 33. Owner team: Blue Harbor. Approval path: legal review. Primary region: Singapore.",
+      "retrievalScore": 1.0,
+      "answerScore": 1.0,
+      "citationScore": 1.0,
+      "totalScore": 1.0,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#6",
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 6580
+    },
+    {
+      "index": 116,
+      "id": "MULTI-CASE-011",
+      "category": "multi-field",
+      "question": "For CASE-011, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-011",
+      "requiredTerms": [
+        "incident commander approval",
+        "Berlin"
+      ],
+      "answer": "[approval_path: legal review, primary_region: Singapore]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#7",
+        "local_doc_qa_eval_corpus.md#28",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4801
+    },
+    {
+      "index": 117,
+      "id": "MULTI-CASE-013",
+      "category": "multi-field",
+      "question": "For CASE-013, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-013",
+      "requiredTerms": [
+        "finance director approval",
+        "Seattle"
+      ],
+      "answer": "Primary region: Bengaluru. Approval path: manager approval.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#8",
+        "local_doc_qa_eval_corpus.md#9",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4634
+    },
+    {
+      "index": 118,
+      "id": "MULTI-CASE-015",
+      "category": "multi-field",
+      "question": "For CASE-015, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-015",
+      "requiredTerms": [
+        "legal review",
+        "Singapore"
+      ],
+      "answer": "Primary region: Seattle. Approval path: security review.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#10",
+        "local_doc_qa_eval_corpus.md#9",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6589
+    },
+    {
+      "index": 119,
+      "id": "MULTI-CASE-017",
+      "category": "multi-field",
+      "question": "For CASE-017, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-017",
+      "requiredTerms": [
+        "incident commander approval",
+        "Berlin"
+      ],
+      "answer": "Primary region: Seattle. Approval path: legal review.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#11",
+        "local_doc_qa_eval_corpus.md#10",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 6295
+    },
+    {
+      "index": 120,
+      "id": "MULTI-CASE-019",
+      "category": "multi-field",
+      "question": "For CASE-019, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-019",
+      "requiredTerms": [
+        "finance director approval",
+        "Seattle"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 12\nthe exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-019: Helio Vault 19 Record ID: CASE-019. Project codename: Helio Vault 19. Owner team: Blue Harbor. Approval path: incident commander approval. Primary region: Berlin. Deadline: 2026-09-25. Budget cap: $1999. Retention window: 31 days. Severity class: medium. Operational note: when answering questions about CASE-019, use the exact owner, approval path, deadline, region, budget, retention...\n\n[2] local_doc_qa_eval_corpus.md chunk 33\nthe exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-051: Beacon Ledger 51 Record ID: CASE-051. Project codename: Beacon Ledger 51. Owner team: Cedar Security. Approval path: legal review. Primary region: Singapore. Deadline: 2026-07-19. Budget cap: $3597. Retention window: 23 days. Severity class: critical. Operational note: when answering questions about CASE-051, use the exact owner, approval path, deadline, region, budget, retention...\n\n[3] local_doc_qa_eval_corpus.md chunk 1\n# Local Doc QA Evaluation Corpus This file is a synthetic evaluation corpus for local document question answering. Every record below is authoritative for the tests. If a question asks for a record or field that is not listed, the correct behavior is to say the local context is missing. ## CASE-001: Beacon Ledger 1 Record ID: CASE-001. Project codename: Beacon Ledger 1. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention window: 23 days. Severity class: critical. Operational note: when answering questions about CASE-001, use the exact owner, approval path, deadline, region, budget, retention...\n\nQuestion: For CASE-019, provide the approval path and primary region in one concise sentence.\nAnswer: The exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section.",
+      "retrievalScore": 1.0,
+      "answerScore": 1.0,
+      "citationScore": 1.0,
+      "totalScore": 1.0,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#12",
+        "local_doc_qa_eval_corpus.md#33",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 27520
+    },
+    {
+      "index": 121,
+      "id": "MULTI-CASE-021",
+      "category": "multi-field",
+      "question": "For CASE-021, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-021",
+      "requiredTerms": [
+        "legal review",
+        "Singapore"
+      ],
+      "answer": "Primary region: Dublin. Approval path: security review.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#13",
+        "local_doc_qa_eval_corpus.md#14",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5564
+    },
+    {
+      "index": 122,
+      "id": "MULTI-CASE-023",
+      "category": "multi-field",
+      "question": "For CASE-023, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-023",
+      "requiredTerms": [
+        "incident commander approval",
+        "Berlin"
+      ],
+      "answer": "**Approval path:** data steward approval\n**Primary region:** Toronto",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#14",
+        "local_doc_qa_eval_corpus.md#15",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4635
+    },
+    {
+      "index": 123,
+      "id": "MULTI-CASE-025",
+      "category": "multi-field",
+      "question": "For CASE-025, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-025",
+      "requiredTerms": [
+        "finance director approval",
+        "Seattle"
+      ],
+      "answer": "Primary region: Berlin. Approval path: manager approval.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#16",
+        "local_doc_qa_eval_corpus.md#15",
+        "local_doc_qa_eval_corpus.md#18"
+      ],
+      "elapsedMs": 4553
+    },
+    {
+      "index": 124,
+      "id": "MULTI-CASE-027",
+      "category": "multi-field",
+      "question": "For CASE-027, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-027",
+      "requiredTerms": [
+        "legal review",
+        "Singapore"
+      ],
+      "answer": "primary region: Seattle. approval path: finance director approval.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#17",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#25"
+      ],
+      "elapsedMs": 5151
+    },
+    {
+      "index": 125,
+      "id": "MULTI-CASE-029",
+      "category": "multi-field",
+      "question": "For CASE-029, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-029",
+      "requiredTerms": [
+        "incident commander approval",
+        "Berlin"
+      ],
+      "answer": "Primary region: Dublin. Approval path: legal review.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#18",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 7444
+    },
+    {
+      "index": 126,
+      "id": "MULTI-CASE-031",
+      "category": "multi-field",
+      "question": "For CASE-031, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-031",
+      "requiredTerms": [
+        "finance director approval",
+        "Seattle"
+      ],
+      "answer": "Primary region: Dublin. Approval path: legal review.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#19",
+        "local_doc_qa_eval_corpus.md#20",
+        "local_doc_qa_eval_corpus.md#18"
+      ],
+      "elapsedMs": 6074
+    },
+    {
+      "index": 127,
+      "id": "MULTI-CASE-033",
+      "category": "multi-field",
+      "question": "For CASE-033, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-033",
+      "requiredTerms": [
+        "legal review",
+        "Singapore"
+      ],
+      "answer": "Primary region: Seattle. Approval path: security review.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#21",
+        "local_doc_qa_eval_corpus.md#20",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4675
+    },
+    {
+      "index": 128,
+      "id": "MULTI-CASE-035",
+      "category": "multi-field",
+      "question": "For CASE-035, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-035",
+      "requiredTerms": [
+        "incident commander approval",
+        "Berlin"
+      ],
+      "answer": "[1] local_doc_qa_eval_corpus.md chunk 22\narchive 33 Record ID: CASE-033. Project codename: Delta Archive 33. Owner team: Blue Harbor. Approval path: legal review. Primary region: Singapore. Deadline: 2026-07-19. Budget cap: $2751. Retention window: 26 days. Severity class: medium. Operational note: when answering questions about CASE-033, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section. ## CASE-034: Ember Queue 34 Record ID: CASE-034. Project codename: Ember Queue 34. Owner team: Blue Harbor. Approval path: finance director approval. Primary region: Seattle. Deadline: 2026-02-04. Budget cap: $1247. Retention window: 24 days. Severity class: critical. Operational note: when answering questions about CASE-031, use the exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 14019
+    },
+    {
+      "index": 129,
+      "id": "MULTI-CASE-037",
+      "category": "multi-field",
+      "question": "For CASE-037, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-037",
+      "requiredTerms": [
+        "finance director approval",
+        "Seattle"
+      ],
+      "answer": "The exact owner, approval path, deadline, region, budget, retention window, and severity values written in this section for CASE-037 are as follows:\n\n- Owner team: Cedar Security\n- Approval path: incident commander approval\n- Primary region: Berlin\n- Deadline: 2026-09-25\n- Budget cap: $2845\n- Retention window: 28 days\n- Severity class: critical\n\nThe exact owner, approval path, deadline, region, budget, retention window, and severity values for CASE-037 are as follows:\n\n- Owner team: Cedar Security\n- Approval path: incident commander approval\n- Primary region: Berlin\n- Deadline: 2026-09-25\n- Budget cap: $2845\n- Retention window: 28 days\n- Severity class: critical",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#23",
+        "local_doc_qa_eval_corpus.md#15",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 12249
+    },
+    {
+      "index": 130,
+      "id": "MULTI-CASE-039",
+      "category": "multi-field",
+      "question": "For CASE-039, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-039",
+      "requiredTerms": [
+        "legal review",
+        "Singapore"
+      ],
+      "answer": "Primary region: Seattle. Approval path: finance director approval.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#24",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#3"
+      ],
+      "elapsedMs": 4922
+    },
+    {
+      "index": 131,
+      "id": "MULTI-CASE-041",
+      "category": "multi-field",
+      "question": "For CASE-041, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-041",
+      "requiredTerms": [
+        "incident commander approval",
+        "Berlin"
+      ],
+      "answer": "The approval path for CASE-041 is data steward approval, and the primary region is Toronto.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#25",
+        "local_doc_qa_eval_corpus.md#26",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5125
+    },
+    {
+      "index": 132,
+      "id": "MULTI-CASE-043",
+      "category": "multi-field",
+      "question": "For CASE-043, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-043",
+      "requiredTerms": [
+        "finance director approval",
+        "Seattle"
+      ],
+      "answer": "Primary region: Bengaluru. Approval path: manager approval.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#27",
+        "local_doc_qa_eval_corpus.md#26",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5117
+    },
+    {
+      "index": 133,
+      "id": "MULTI-CASE-045",
+      "category": "multi-field",
+      "question": "For CASE-045, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-045",
+      "requiredTerms": [
+        "legal review",
+        "Singapore"
+      ],
+      "answer": "Primary region: Seattle. Approval path: finance director approval.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#28",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#30"
+      ],
+      "elapsedMs": 5379
+    },
+    {
+      "index": 134,
+      "id": "MULTI-CASE-047",
+      "category": "multi-field",
+      "question": "For CASE-047, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-047",
+      "requiredTerms": [
+        "incident commander approval",
+        "Berlin"
+      ],
+      "answer": "Primary region: Toronto. Approval path: data steward approval.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#29",
+        "local_doc_qa_eval_corpus.md#30",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 5898
+    },
+    {
+      "index": 135,
+      "id": "MULTI-CASE-049",
+      "category": "multi-field",
+      "question": "For CASE-049, provide the approval path and primary region in one concise sentence.",
+      "expectedRecordId": "CASE-049",
+      "requiredTerms": [
+        "finance director approval",
+        "Seattle"
+      ],
+      "answer": "Primary region: Singapore. Approval path: legal review.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#31",
+        "local_doc_qa_eval_corpus.md#30",
+        "local_doc_qa_eval_corpus.md#33"
+      ],
+      "elapsedMs": 5890
+    },
+    {
+      "index": 136,
+      "id": "RETENTION-CASE-004",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-004? Answer briefly.",
+      "expectedRecordId": "CASE-004",
+      "requiredTerms": [
+        "18",
+        "days"
+      ],
+      "answer": "29 days",
+      "retrievalScore": 1.0,
+      "answerScore": 0.5,
+      "citationScore": 0.0,
+      "totalScore": 0.575,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#3",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#24"
+      ],
+      "elapsedMs": 4492
+    },
+    {
+      "index": 137,
+      "id": "RETENTION-CASE-009",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-009? Answer briefly.",
+      "expectedRecordId": "CASE-009",
+      "requiredTerms": [
+        "23",
+        "days"
+      ],
+      "answer": "21 days",
+      "retrievalScore": 1.0,
+      "answerScore": 0.5,
+      "citationScore": 0.0,
+      "totalScore": 0.575,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#6",
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 4047
+    },
+    {
+      "index": 138,
+      "id": "RETENTION-CASE-014",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-014? Answer briefly.",
+      "expectedRecordId": "CASE-014",
+      "requiredTerms": [
+        "28",
+        "days"
+      ],
+      "answer": "26 days",
+      "retrievalScore": 1.0,
+      "answerScore": 0.5,
+      "citationScore": 0.0,
+      "totalScore": 0.575,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#9",
+        "local_doc_qa_eval_corpus.md#30",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4882
+    },
+    {
+      "index": 139,
+      "id": "RETENTION-CASE-019",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-019? Answer briefly.",
+      "expectedRecordId": "CASE-019",
+      "requiredTerms": [
+        "33",
+        "days"
+      ],
+      "answer": "31 days",
+      "retrievalScore": 1.0,
+      "answerScore": 0.5,
+      "citationScore": 0.0,
+      "totalScore": 0.575,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#12",
+        "local_doc_qa_eval_corpus.md#33",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4939
+    },
+    {
+      "index": 140,
+      "id": "RETENTION-CASE-024",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-024? Answer briefly.",
+      "expectedRecordId": "CASE-024",
+      "requiredTerms": [
+        "17",
+        "days"
+      ],
+      "answer": "15 days",
+      "retrievalScore": 1.0,
+      "answerScore": 0.5,
+      "citationScore": 0.0,
+      "totalScore": 0.575,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#15",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#36"
+      ],
+      "elapsedMs": 5792
+    },
+    {
+      "index": 141,
+      "id": "RETENTION-CASE-029",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-029? Answer briefly.",
+      "expectedRecordId": "CASE-029",
+      "requiredTerms": [
+        "22",
+        "days"
+      ],
+      "answer": "2026-09-25",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#18",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#9"
+      ],
+      "elapsedMs": 5099
+    },
+    {
+      "index": 142,
+      "id": "RETENTION-CASE-034",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-034? Answer briefly.",
+      "expectedRecordId": "CASE-034",
+      "requiredTerms": [
+        "27",
+        "days"
+      ],
+      "answer": "26 days",
+      "retrievalScore": 1.0,
+      "answerScore": 0.5,
+      "citationScore": 0.0,
+      "totalScore": 0.575,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#21",
+        "local_doc_qa_eval_corpus.md#22",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4571
+    },
+    {
+      "index": 143,
+      "id": "RETENTION-CASE-039",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-039? Answer briefly.",
+      "expectedRecordId": "CASE-039",
+      "requiredTerms": [
+        "32",
+        "days"
+      ],
+      "answer": "29 days",
+      "retrievalScore": 1.0,
+      "answerScore": 0.5,
+      "citationScore": 0.0,
+      "totalScore": 0.575,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#24",
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#3"
+      ],
+      "elapsedMs": 4559
+    },
+    {
+      "index": 144,
+      "id": "RETENTION-CASE-044",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-044? Answer briefly.",
+      "expectedRecordId": "CASE-044",
+      "requiredTerms": [
+        "16",
+        "days"
+      ],
+      "answer": "35 days",
+      "retrievalScore": 1.0,
+      "answerScore": 0.5,
+      "citationScore": 0.0,
+      "totalScore": 0.575,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#27",
+        "local_doc_qa_eval_corpus.md#28",
+        "local_doc_qa_eval_corpus.md#1"
+      ],
+      "elapsedMs": 4150
+    },
+    {
+      "index": 145,
+      "id": "RETENTION-CASE-049",
+      "category": "numeric-retention",
+      "question": "How many days is the retention window for CASE-049? Answer briefly.",
+      "expectedRecordId": "CASE-049",
+      "requiredTerms": [
+        "21",
+        "days"
+      ],
+      "answer": "18 days",
+      "retrievalScore": 1.0,
+      "answerScore": 0.5,
+      "citationScore": 0.0,
+      "totalScore": 0.575,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#31",
+        "local_doc_qa_eval_corpus.md#30",
+        "local_doc_qa_eval_corpus.md#33"
+      ],
+      "elapsedMs": 5206
+    },
+    {
+      "index": 146,
+      "id": "MISSING-CASE-090",
+      "category": "unanswerable",
+      "question": "What is the owner team for CASE-090? If the local file does not say, state that it is missing.",
+      "expectedRecordId": "CASE-090",
+      "requiredTerms": [
+        "missing"
+      ],
+      "answer": "[notes.md]",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 1.0,
+      "totalScore": 0.35,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#37",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 5410
+    },
+    {
+      "index": 147,
+      "id": "MISSING-CASE-091",
+      "category": "unanswerable",
+      "question": "What is the owner team for CASE-091? If the local file does not say, state that it is missing.",
+      "expectedRecordId": "CASE-091",
+      "requiredTerms": [
+        "missing"
+      ],
+      "answer": "CASE-091. Owner team: Neon Platform.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#37",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 5964
+    },
+    {
+      "index": 148,
+      "id": "MISSING-CASE-092",
+      "category": "unanswerable",
+      "question": "What is the owner team for CASE-092? If the local file does not say, state that it is missing.",
+      "expectedRecordId": "CASE-092",
+      "requiredTerms": [
+        "missing"
+      ],
+      "answer": "The owner team for CASE-092 is Blue Harbor.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#37",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 4154
+    },
+    {
+      "index": 149,
+      "id": "MISSING-CASE-093",
+      "category": "unanswerable",
+      "question": "What is the owner team for CASE-093? If the local file does not say, state that it is missing.",
+      "expectedRecordId": "CASE-093",
+      "requiredTerms": [
+        "missing"
+      ],
+      "answer": "The owner team for CASE-093 is Blue Harbor.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#37",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 4946
+    },
+    {
+      "index": 150,
+      "id": "MISSING-CASE-094",
+      "category": "unanswerable",
+      "question": "What is the owner team for CASE-094? If the local file does not say, state that it is missing.",
+      "expectedRecordId": "CASE-094",
+      "requiredTerms": [
+        "missing"
+      ],
+      "answer": "CASE-094. Owner team: Neon Platform.",
+      "retrievalScore": 1.0,
+      "answerScore": 0.0,
+      "citationScore": 0.0,
+      "totalScore": 0.25,
+      "topSources": [
+        "local_doc_qa_eval_corpus.md#1",
+        "local_doc_qa_eval_corpus.md#37",
+        "local_doc_qa_eval_corpus.md#21"
+      ],
+      "elapsedMs": 5101
+    }
+  ]
+}
