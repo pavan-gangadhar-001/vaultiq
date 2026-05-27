@@ -13,6 +13,18 @@ VaultIQ is an Android-first Flutter app for private document question answering.
 - Structured `[LocalDocQA]` logs around setup, extraction, chunking, retrieval, prompt construction, and generation.
 - Synthetic public test corpus with PDFs, DOCX files, a manifest, and an answer key.
 
+## Target Model Bundle
+
+The selected 6 GB GGUF target is `Qwen3-8B-Q4_K_M.gguf` plus `Qwen3-Embedding-0.6B-Q8_0.gguf`, for about 5.67 GB of model files. The fallback/debug target is `Qwen3-4B-Q8_0.gguf` plus the same embedding model, for about 4.92 GB.
+
+The current answer-generation runtime still uses the existing `flutter_gemma`
+model path. The GGUF bundle is captured as first-class project metadata, and
+the Android project now includes the first native GGUF runner slice: GGUF
+inspection plus a layer-by-layer `mmap` validation pass. Full GGUF text
+generation is still tracked in `docs/architecture/qwen3_gguf_runner.md`.
+
+For x86 Android emulator testing, VaultIQ uses a built-in deterministic hashing embedder so the import, embedding, and hybrid retrieval paths can be tested without ARM64 native embedding libraries. Release builds on ARM64 devices continue to use the Gecko native embedder.
+
 ## Repository Layout
 
 - `lib/` - Flutter app, controller, UI, local AI service, importers, storage, and ranking.
@@ -21,6 +33,7 @@ VaultIQ is an Android-first Flutter app for private document question answering.
 - `integration_test/` - Device-oriented retrieval and RAG quality checks.
 - `test_corpus/public_sample_docs/` - Public-safe sample PDFs, DOCX files, manifest, and answer key.
 - `tools/generate_public_test_docs.py` - Regenerates the sample document corpus.
+- `docs/architecture/` - Native GGUF runner target architecture and model bundle notes.
 - `docs/quality/` - Previous RAG evaluation reports and raw result files.
 
 ## Requirements
@@ -44,6 +57,12 @@ Run on a connected Android device:
 flutter run -d <device-id>
 ```
 
+Debug Android builds keep resumable answer-model downloads in the emulator's
+external app media directory when available. Normal app restarts and `flutter
+run` reinstalls that do not uninstall the package reuse the existing `.part` or
+complete model file. If Flutter prints `Uninstalling old version`, Android has
+removed app-owned model files and the next install must download again.
+
 Watch app logs:
 
 ```powershell
@@ -59,4 +78,3 @@ python tools/generate_public_test_docs.py
 ```
 
 Use `test_corpus/public_sample_docs/answer_key.csv` as the expected-answer list for manual or automated quality runs.
-

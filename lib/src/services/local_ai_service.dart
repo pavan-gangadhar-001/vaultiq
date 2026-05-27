@@ -5,10 +5,20 @@ import 'package:device_info_plus/device_info_plus.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_gemma/flutter_gemma.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 
 import '../model_catalog.dart';
 import '../models.dart';
 import 'app_logger.dart';
+import 'debug_embedding_service.dart';
+
+class _OpenedDownloadResponse {
+  const _OpenedDownloadResponse({required this.uri, required this.response});
+
+  final Uri uri;
+  final HttpClientResponse response;
+}
 
 class LocalAiService {
   static const MethodChannel _deviceChannel = MethodChannel(
@@ -16,6 +26,12 @@ class LocalAiService {
   );
   static const int _maxSafeEmbeddingInputChars = 220;
   static const int _minEmbeddingRetryInputChars = 64;
+  static const int _modelDownloadMaxAttempts = 30;
+  static const Duration _modelDownloadConnectionTimeout = Duration(minutes: 2);
+  static const int _modelDownloadMaxRetryDelaySeconds = 8;
+  static const DebugEmbeddingService _debugEmbedder = DebugEmbeddingService(
+    dimension: 384,
+  );
   static const Set<String> _queryStopWords = {
     'about',
     'answer',
@@ -87,6 +103,127 @@ class LocalAiService {
     return installed;
   }
 
+  Future<bool> activateInstalledModel(DownloadableModel model) async {
+    await initialize();
+    if (hasActiveModel) {
+      AppLogger.info('ai.model.activate.skip_active', {
+        'filename': model.filename,
+      });
+      return true;
+    }
+
+    final cached = await _completeCachedModelFile(model);
+    if (cached != null) {
+      AppLogger.info('ai.model.activate.cached_file', {
+        'filename': model.filename,
+        'path': cached.path,
+      });
+      await _setActiveModelFromFile(model, cached.path);
+      AppLogger.info('ai.model.activate.cached_file.done', {
+        'filename': model.filename,
+        'hasActiveModel': hasActiveModel,
+      });
+      return hasActiveModel;
+    }
+
+    final installed = await FlutterGemma.isModelInstalled(model.filename);
+    AppLogger.info('ai.model.activate.check', {
+      'filename': model.filename,
+      'installed': installed,
+    });
+    if (!installed) return false;
+
+    await _setActiveModel(model);
+    AppLogger.info('ai.model.activate.done', {
+      'filename': model.filename,
+      'hasActiveModel': hasActiveModel,
+    });
+    return hasActiveModel;
+  }
+
+  DownloadableEmbeddingModel embeddingModelForAbis(List<String> abis) {
+    if (_supportsNativeEmbedderAbis(abis)) {
+      return DownloadableEmbeddingModel.gecko256;
+    }
+    return kReleaseMode
+        ? DownloadableEmbeddingModel.gecko256
+        : DownloadableEmbeddingModel.debugHashing;
+  }
+
+  Future<DownloadableEmbeddingModel> preferredEmbeddingModel() async {
+    if (!Platform.isAndroid) return DownloadableEmbeddingModel.gecko256;
+    final abis = await supportedAbis();
+    return embeddingModelForAbis(abis);
+  }
+
+  Future<bool> isEmbeddingModelInstalled(
+    DownloadableEmbeddingModel model,
+  ) async {
+    await initialize();
+    if (model.isBuiltIn) {
+      AppLogger.info('ai.embedder.installed.checked', {
+        'filename': model.filename,
+        'runtime': model.runtime.name,
+        'installed': true,
+      });
+      return true;
+    }
+
+    final installed =
+        hasActiveEmbedder ||
+        (await FlutterGemma.isModelInstalled(model.filename) &&
+            await FlutterGemma.isModelInstalled(
+              _embeddingTokenizerFilename(model),
+            ));
+    AppLogger.info('ai.embedder.installed.checked', {
+      'filename': model.filename,
+      'runtime': model.runtime.name,
+      'installed': installed,
+      'hasActiveEmbedder': hasActiveEmbedder,
+    });
+    return installed;
+  }
+
+  Future<bool> activateInstalledEmbedder(
+    DownloadableEmbeddingModel model,
+  ) async {
+    await initialize();
+    if (model.isBuiltIn) {
+      AppLogger.info('ai.embedder.activate.builtin', {
+        'filename': model.filename,
+        'runtime': model.runtime.name,
+      });
+      return true;
+    }
+
+    if (hasActiveEmbedder) {
+      AppLogger.info('ai.embedder.activate.skip_active', {
+        'filename': model.filename,
+      });
+      return true;
+    }
+
+    final modelInstalled = await FlutterGemma.isModelInstalled(model.filename);
+    final tokenizerFilename = _embeddingTokenizerFilename(model);
+    final tokenizerInstalled = await FlutterGemma.isModelInstalled(
+      tokenizerFilename,
+    );
+    AppLogger.info('ai.embedder.activate.check', {
+      'filename': model.filename,
+      'tokenizerFilename': tokenizerFilename,
+      'modelInstalled': modelInstalled,
+      'tokenizerInstalled': tokenizerInstalled,
+    });
+    if (!modelInstalled || !tokenizerInstalled) return false;
+
+    await _setActiveEmbedder(model);
+    AppLogger.info('ai.embedder.activate.done', {
+      'filename': model.filename,
+      'hasActiveEmbedder': hasActiveEmbedder,
+    });
+    return hasActiveEmbedder;
+  }
+
   Future<List<String>> supportedAbis() async {
     if (!Platform.isAndroid) {
       AppLogger.info('ai.supported_abis.non_android');
@@ -119,17 +256,40 @@ class LocalAiService {
   }
 
   Future<bool> supportsLocalEmbedder() async {
+    final model = await preferredEmbeddingModel();
+    return supportsEmbeddingModel(model);
+  }
+
+  Future<bool> supportsEmbeddingModel(DownloadableEmbeddingModel model) async {
+    if (model.isBuiltIn) {
+      AppLogger.info('ai.embedder_support.checked', {
+        'model': model.filename,
+        'runtime': model.runtime.name,
+        'supported': true,
+      });
+      return true;
+    }
     if (!Platform.isAndroid) {
-      AppLogger.info('ai.embedder_support.non_android', {'supported': true});
+      AppLogger.info('ai.embedder_support.non_android', {
+        'model': model.filename,
+        'runtime': model.runtime.name,
+        'supported': true,
+      });
       return true;
     }
     final abis = await supportedAbis();
-    final supported = abis.isEmpty || abis.first == 'arm64-v8a';
+    final supported = _supportsNativeEmbedderAbis(abis);
     AppLogger.info('ai.embedder_support.checked', {
+      'model': model.filename,
+      'runtime': model.runtime.name,
       'abis': abis,
       'supported': supported,
     });
     return supported;
+  }
+
+  bool _supportsNativeEmbedderAbis(List<String> abis) {
+    return abis.isEmpty || abis.first == 'arm64-v8a';
   }
 
   Future<void> installModelFromFile({
@@ -170,17 +330,25 @@ class LocalAiService {
     });
     await initialize();
     await _closeEmbedder();
-    await FlutterGemma.installModel(
-          modelType: model.modelType,
-          fileType: model.fileType,
-        )
-        .fromNetwork(model.url, foreground: model.useForegroundDownload)
-        .withProgress(onProgress)
-        .install();
+    if (await activateInstalledModel(model)) {
+      onProgress(100);
+      AppLogger.info('ai.install_model_network.reused_installed', {
+        'filename': model.filename,
+        'durationMs': stopwatch.elapsedMilliseconds,
+      });
+      return;
+    }
+
+    final cachedModel = await _downloadModelToCache(
+      model,
+      onProgress: onProgress,
+    );
+    await _setActiveModelFromFile(model, cachedModel.path);
     _model = null;
     AppLogger.info('ai.install_model_network.done', {
       'durationMs': stopwatch.elapsedMilliseconds,
       'hasActiveModel': hasActiveModel,
+      'cachedPath': cachedModel.path,
     });
   }
 
@@ -192,38 +360,35 @@ class LocalAiService {
     AppLogger.info('ai.install_embedder_network.start', {
       'label': model.label,
       'size': model.size,
+      'runtime': model.runtime.name,
       'dimension': model.dimension,
       'maxSequenceLength': model.maxSequenceLength,
       'maxInputChars': model.maxInputChars,
     });
     await initialize();
-    await _ensureEmbedderSupported();
+    await _ensureEmbedderSupported(model);
     await _closeInferenceModel();
-    var modelProgress = 0;
-    var tokenizerProgress = 0;
-    await FlutterGemma.installEmbedder()
-        .modelFromNetwork(model.url)
-        .tokenizerFromNetwork(
-          model.tokenizerUrl,
-          iosPath: model.iosTokenizerUrl,
-        )
-        .withModelProgress((progress) {
-          modelProgress = progress;
-          AppLogger.info('ai.install_embedder_network.model_progress', {
-            'progress': progress,
-            'tokenizerProgress': tokenizerProgress,
-          });
-          onProgress(modelProgress, tokenizerProgress);
-        })
-        .withTokenizerProgress((progress) {
-          tokenizerProgress = progress;
-          AppLogger.info('ai.install_embedder_network.tokenizer_progress', {
-            'modelProgress': modelProgress,
-            'progress': progress,
-          });
-          onProgress(modelProgress, tokenizerProgress);
-        })
-        .install();
+    if (model.isBuiltIn) {
+      await _closeEmbedder();
+      onProgress(100, 100);
+      AppLogger.info('ai.install_embedder_builtin.done', {
+        'durationMs': stopwatch.elapsedMilliseconds,
+        'dimension': model.dimension,
+      });
+      return;
+    }
+
+    if (await activateInstalledEmbedder(model)) {
+      await _closeEmbedder();
+      onProgress(100, 100);
+      AppLogger.info('ai.install_embedder_network.reused_installed', {
+        'filename': model.filename,
+        'durationMs': stopwatch.elapsedMilliseconds,
+      });
+      return;
+    }
+
+    await _setActiveEmbedder(model, onProgress: onProgress);
     await _embedder?.close();
     _embedder = null;
     AppLogger.info('ai.install_embedder_network.done', {
@@ -232,21 +397,444 @@ class LocalAiService {
     });
   }
 
+  Future<void> _setActiveModel(
+    DownloadableModel model, {
+    void Function(int progress)? onProgress,
+  }) async {
+    var builder = FlutterGemma.installModel(
+      modelType: model.modelType,
+      fileType: model.fileType,
+    ).fromNetwork(model.url, foreground: model.useForegroundDownload);
+    if (onProgress != null) {
+      builder = builder.withProgress(onProgress);
+    }
+    await builder.install();
+  }
+
+  Future<void> _setActiveModelFromFile(
+    DownloadableModel model,
+    String path,
+  ) async {
+    await FlutterGemma.installModel(
+      modelType: model.modelType,
+      fileType: model.fileType,
+    ).fromFile(path).install();
+  }
+
+  Future<File?> _completeCachedModelFile(DownloadableModel model) async {
+    final file = await _modelCacheFile(model.filename);
+    final cached = await _validCompleteCachedModelFile(file);
+    if (cached != null) return cached;
+
+    final privateFile = await _privateModelCacheFile(model.filename);
+    if (_sameCachePath(file, privateFile)) return null;
+    final privateCached = await _validCompleteCachedModelFile(privateFile);
+    if (privateCached != null) {
+      AppLogger.info('ai.model.cache.hit.private_legacy', {
+        'filename': model.filename,
+        'path': privateCached.path,
+      });
+      return privateCached;
+    }
+    return null;
+  }
+
+  Future<File?> _validCompleteCachedModelFile(File file) async {
+    final marker = _downloadCompleteMarker(file);
+    if (!await file.exists() || !await marker.exists()) return null;
+    final length = await file.length();
+    if (length < 1024 * 1024) return null;
+    return file;
+  }
+
+  Future<File> _downloadModelToCache(
+    DownloadableModel model, {
+    required void Function(int progress) onProgress,
+  }) async {
+    final cached = await _completeCachedModelFile(model);
+    if (cached != null) {
+      onProgress(100);
+      AppLogger.info('ai.model.cache.hit', {
+        'filename': model.filename,
+        'path': cached.path,
+      });
+      return cached;
+    }
+
+    final target = await _modelCacheFile(model.filename);
+    await _restorePrivatePartialModelCache(model.filename, target);
+    final part = _downloadPartFile(target);
+    if (await target.exists() && !await part.exists()) {
+      await target.rename(part.path);
+      AppLogger.warn('ai.model.cache.resume_unmarked_file', {
+        'filename': model.filename,
+        'bytes': await part.length(),
+      });
+    }
+
+    for (var attempt = 1; attempt <= _modelDownloadMaxAttempts; attempt++) {
+      final existingBytes = await part.exists() ? await part.length() : 0;
+      AppLogger.info('ai.model.cache.download.attempt', {
+        'filename': model.filename,
+        'attempt': attempt,
+        'resumeBytes': existingBytes,
+        'connectionTimeoutMs': _modelDownloadConnectionTimeout.inMilliseconds,
+      });
+
+      final client = HttpClient()
+        ..connectionTimeout = _modelDownloadConnectionTimeout;
+      IOSink? sink;
+      try {
+        final uri = Uri.parse(model.url);
+        final opened = await _openDownloadResponse(
+          client: client,
+          uri: uri,
+          resumeBytes: existingBytes,
+        );
+        final response = opened.response;
+        if (response.statusCode == HttpStatus.requestedRangeNotSatisfiable) {
+          final total = _unsatisfiedContentRangeTotal(response.headers);
+          await response.drain<void>();
+          if (total != null && existingBytes >= total) {
+            await _markModelDownloadComplete(part, target);
+            onProgress(100);
+            return target;
+          }
+          if (await part.exists()) {
+            await part.delete();
+          }
+          throw HttpException(
+            'Server rejected resume range for ${model.filename}',
+            uri: opened.uri,
+          );
+        }
+
+        final append = response.statusCode == HttpStatus.partialContent;
+        final isFresh = response.statusCode == HttpStatus.ok;
+        if (!append && !isFresh) {
+          await response.drain<void>();
+          throw HttpException(
+            'Model download failed with HTTP ${response.statusCode}',
+            uri: opened.uri,
+          );
+        }
+
+        var receivedBytes = append ? existingBytes : 0;
+        final totalBytes = append
+            ? _contentRangeTotal(response.headers) ??
+                  (response.contentLength >= 0
+                      ? existingBytes + response.contentLength
+                      : null)
+            : (response.contentLength >= 0 ? response.contentLength : null);
+
+        if (isFresh && existingBytes > 0) {
+          AppLogger.warn('ai.model.cache.range_ignored_restart_stream', {
+            'filename': model.filename,
+            'discardedBytes': existingBytes,
+            'effectiveUriHost': opened.uri.host,
+          });
+        }
+
+        sink = part.openWrite(mode: append ? FileMode.append : FileMode.write);
+        var lastProgress = _downloadProgress(receivedBytes, totalBytes) ?? -1;
+        if (lastProgress >= 0) {
+          onProgress(lastProgress);
+        }
+        await for (final chunk in response) {
+          sink.add(chunk);
+          receivedBytes += chunk.length;
+          final progress = _downloadProgress(receivedBytes, totalBytes);
+          if (progress != null && progress != lastProgress) {
+            lastProgress = progress;
+            onProgress(progress);
+          }
+        }
+        await sink.close();
+        sink = null;
+
+        if (totalBytes != null && receivedBytes < totalBytes) {
+          throw HttpException(
+            'Model download stopped early: $receivedBytes of $totalBytes bytes',
+            uri: opened.uri,
+          );
+        }
+
+        await _markModelDownloadComplete(part, target);
+        onProgress(100);
+        AppLogger.info('ai.model.cache.download.done', {
+          'filename': model.filename,
+          'bytes': await target.length(),
+          'path': target.path,
+        });
+        return target;
+      } catch (e, st) {
+        await sink?.close();
+        if (attempt == _modelDownloadMaxAttempts) {
+          AppLogger.error('ai.model.cache.download.failed', e, st, {
+            'filename': model.filename,
+            'attempt': attempt,
+            'partialBytes': await part.exists() ? await part.length() : 0,
+          });
+          rethrow;
+        }
+        AppLogger.warn('ai.model.cache.download.retry', {
+          'filename': model.filename,
+          'attempt': attempt,
+          'nextAttempt': attempt + 1,
+          'partialBytes': await part.exists() ? await part.length() : 0,
+          'error': e.toString(),
+        });
+        await Future<void>.delayed(
+          Duration(
+            seconds: attempt.clamp(1, _modelDownloadMaxRetryDelaySeconds),
+          ),
+        );
+      } finally {
+        client.close(force: true);
+      }
+    }
+
+    throw StateError('Unreachable model download state for ${model.filename}');
+  }
+
+  Future<void> _restorePrivatePartialModelCache(
+    String filename,
+    File target,
+  ) async {
+    final privateTarget = await _privateModelCacheFile(filename);
+    if (_sameCachePath(target, privateTarget)) return;
+
+    final targetPart = _downloadPartFile(target);
+    if (await targetPart.exists() || await target.exists()) return;
+
+    final privatePart = _downloadPartFile(privateTarget);
+    File? source;
+    if (await privatePart.exists()) {
+      source = privatePart;
+    } else if (await privateTarget.exists() &&
+        !await _downloadCompleteMarker(privateTarget).exists()) {
+      source = privateTarget;
+    }
+    if (source == null) return;
+
+    await target.parent.create(recursive: true);
+    try {
+      await source.rename(targetPart.path);
+    } on FileSystemException {
+      await source.copy(targetPart.path);
+      await source.delete();
+    }
+    AppLogger.warn('ai.model.cache.partial_migrated_to_external', {
+      'filename': filename,
+      'sourcePath': source.path,
+      'targetPath': targetPart.path,
+      'bytes': await targetPart.length(),
+    });
+  }
+
+  Future<_OpenedDownloadResponse> _openDownloadResponse({
+    required HttpClient client,
+    required Uri uri,
+    required int resumeBytes,
+  }) async {
+    var currentUri = uri;
+    const maxRedirects = 10;
+
+    for (
+      var redirectCount = 0;
+      redirectCount <= maxRedirects;
+      redirectCount++
+    ) {
+      final request = await client.getUrl(currentUri);
+      request.followRedirects = false;
+      request.headers.set(HttpHeaders.acceptEncodingHeader, 'identity');
+      if (resumeBytes > 0) {
+        request.headers.set(HttpHeaders.rangeHeader, 'bytes=$resumeBytes-');
+      }
+
+      final response = await request.close();
+      if (!_isRedirect(response.statusCode)) {
+        return _OpenedDownloadResponse(uri: currentUri, response: response);
+      }
+
+      final location = response.headers.value(HttpHeaders.locationHeader);
+      await response.drain<void>();
+      if (location == null || location.isEmpty) {
+        throw HttpException(
+          'Download redirect missing Location header',
+          uri: currentUri,
+        );
+      }
+      currentUri = currentUri.resolve(location);
+    }
+
+    throw HttpException('Too many download redirects', uri: uri);
+  }
+
+  bool _isRedirect(int statusCode) {
+    return statusCode == HttpStatus.movedPermanently ||
+        statusCode == HttpStatus.found ||
+        statusCode == HttpStatus.movedTemporarily ||
+        statusCode == HttpStatus.seeOther ||
+        statusCode == HttpStatus.temporaryRedirect ||
+        statusCode == HttpStatus.permanentRedirect;
+  }
+
+  Future<File> _modelCacheFile(String filename) async {
+    final directory = await _modelCacheDirectory();
+    return File(p.join(directory.path, filename));
+  }
+
+  Future<Directory> _modelCacheDirectory() async {
+    if (Platform.isAndroid && !kReleaseMode) {
+      try {
+        final externalPath = await _deviceChannel.invokeMethod<String>(
+          'externalModelCacheDir',
+        );
+        if (externalPath != null && externalPath.trim().isNotEmpty) {
+          final directory = Directory(externalPath);
+          await directory.create(recursive: true);
+          AppLogger.info('ai.model.cache.dir.external', {
+            'path': directory.path,
+          });
+          return directory;
+        }
+      } catch (e, st) {
+        AppLogger.error('ai.model.cache.dir.external_error', e, st);
+      }
+    }
+
+    final directory = await getApplicationDocumentsDirectory();
+    await directory.create(recursive: true);
+    AppLogger.info('ai.model.cache.dir.private', {'path': directory.path});
+    return directory;
+  }
+
+  Future<File> _privateModelCacheFile(String filename) async {
+    final directory = await getApplicationDocumentsDirectory();
+    await directory.create(recursive: true);
+    return File(p.join(directory.path, filename));
+  }
+
+  bool _sameCachePath(File first, File second) {
+    return p.normalize(first.absolute.path) ==
+        p.normalize(second.absolute.path);
+  }
+
+  File _downloadPartFile(File target) {
+    return File('${target.path}.part');
+  }
+
+  File _downloadCompleteMarker(File target) {
+    return File('${target.path}.complete');
+  }
+
+  Future<void> _markModelDownloadComplete(File part, File target) async {
+    if (await target.exists()) {
+      await target.delete();
+    }
+    if (await part.exists()) {
+      await part.rename(target.path);
+    }
+    await _downloadCompleteMarker(
+      target,
+    ).writeAsString(DateTime.now().toIso8601String(), flush: true);
+  }
+
+  int? _downloadProgress(int receivedBytes, int? totalBytes) {
+    if (totalBytes == null || totalBytes <= 0) return null;
+    final progress = ((receivedBytes / totalBytes) * 100).floor();
+    return progress.clamp(0, 99);
+  }
+
+  int? _contentRangeTotal(HttpHeaders headers) {
+    final value = headers.value(HttpHeaders.contentRangeHeader);
+    if (value == null) return null;
+    final match = RegExp(r'bytes\s+\d+-\d+/(\d+|\*)').firstMatch(value);
+    final total = match?.group(1);
+    if (total == null || total == '*') return null;
+    return int.tryParse(total);
+  }
+
+  int? _unsatisfiedContentRangeTotal(HttpHeaders headers) {
+    final value = headers.value(HttpHeaders.contentRangeHeader);
+    if (value == null) return null;
+    final match = RegExp(r'bytes\s+\*/(\d+)').firstMatch(value);
+    final total = match?.group(1);
+    if (total == null) return null;
+    return int.tryParse(total);
+  }
+
+  Future<void> _setActiveEmbedder(
+    DownloadableEmbeddingModel model, {
+    void Function(int modelProgress, int tokenizerProgress)? onProgress,
+  }) async {
+    var modelProgress = 0;
+    var tokenizerProgress = 0;
+    var builder = FlutterGemma.installEmbedder()
+        .modelFromNetwork(model.url)
+        .tokenizerFromNetwork(
+          model.tokenizerUrl,
+          iosPath: model.iosTokenizerUrl,
+        );
+    if (onProgress != null) {
+      builder = builder
+          .withModelProgress((progress) {
+            modelProgress = progress;
+            AppLogger.info('ai.install_embedder_network.model_progress', {
+              'progress': progress,
+              'tokenizerProgress': tokenizerProgress,
+            });
+            onProgress(modelProgress, tokenizerProgress);
+          })
+          .withTokenizerProgress((progress) {
+            tokenizerProgress = progress;
+            AppLogger.info('ai.install_embedder_network.tokenizer_progress', {
+              'modelProgress': modelProgress,
+              'progress': progress,
+            });
+            onProgress(modelProgress, tokenizerProgress);
+          });
+    }
+    await builder.install();
+  }
+
   Future<List<List<double>>> embedDocuments(
     List<String> texts, {
     int maxInputChars = 900,
   }) {
     return _withNativeAccess('embed_documents', () async {
       final stopwatch = Stopwatch()..start();
+      final embeddingModel = await preferredEmbeddingModel();
+      final safeMaxInputChars = _safeEmbeddingInputChars(
+        maxInputChars,
+        model: embeddingModel,
+      );
       AppLogger.info('ai.embed_documents.start', {
         'textCount': texts.length,
         'requestedMaxInputChars': maxInputChars,
-        'safeMaxInputChars': _safeEmbeddingInputChars(maxInputChars),
+        'safeMaxInputChars': safeMaxInputChars,
+        'embeddingModel': embeddingModel.id,
+        'runtime': embeddingModel.runtime.name,
         'textStats': AppLogger.textStats(texts),
       });
       await initialize();
-      await _ensureEmbedderSupported();
+      await _ensureEmbedderSupported(embeddingModel);
       await _closeInferenceModel();
+      if (embeddingModel.isBuiltIn) {
+        await _closeEmbedder();
+        final embeddings = _debugEmbedder.embedDocuments(
+          texts,
+          maxInputChars: safeMaxInputChars,
+        );
+        AppLogger.info('ai.embed_documents.builtin_done', {
+          'embeddingCount': embeddings.length,
+          'dimension': embeddings.isEmpty ? 0 : embeddings.first.length,
+          'durationMs': stopwatch.elapsedMilliseconds,
+        });
+        return embeddings;
+      }
+
       final embedder = _embedder ??= await FlutterGemma.getActiveEmbedder(
         preferredBackend: PreferredBackend.cpu,
       );
@@ -268,7 +856,7 @@ class LocalAiService {
         final batchEmbeddings = await _generateDocumentEmbeddings(
           embedder,
           batchTexts,
-          maxInputChars: maxInputChars,
+          maxInputChars: safeMaxInputChars,
         );
         AppLogger.info('ai.embed_documents.batch.done', {
           'startIndex': start,
@@ -292,22 +880,42 @@ class LocalAiService {
   Future<List<double>> embedQuery(String text, {int maxInputChars = 450}) {
     return _withNativeAccess('embed_query', () async {
       final stopwatch = Stopwatch()..start();
+      final embeddingModel = await preferredEmbeddingModel();
+      final safeMaxInputChars = _safeEmbeddingInputChars(
+        maxInputChars,
+        model: embeddingModel,
+      );
       AppLogger.info('ai.embed_query.start', {
         'textChars': text.length,
         'requestedMaxInputChars': maxInputChars,
-        'safeMaxInputChars': _safeEmbeddingInputChars(maxInputChars),
+        'safeMaxInputChars': safeMaxInputChars,
+        'embeddingModel': embeddingModel.id,
+        'runtime': embeddingModel.runtime.name,
         'textPreview': AppLogger.preview(text),
       });
       await initialize();
-      await _ensureEmbedderSupported();
+      await _ensureEmbedderSupported(embeddingModel);
       await _closeInferenceModel();
+      if (embeddingModel.isBuiltIn) {
+        await _closeEmbedder();
+        final embedding = _debugEmbedder.embedQuery(
+          text,
+          maxInputChars: safeMaxInputChars,
+        );
+        AppLogger.info('ai.embed_query.builtin_done', {
+          'dimension': embedding.length,
+          'durationMs': stopwatch.elapsedMilliseconds,
+        });
+        return embedding;
+      }
+
       final embedder = _embedder ??= await FlutterGemma.getActiveEmbedder(
         preferredBackend: PreferredBackend.cpu,
       );
       final embedding = await _generateQueryEmbedding(
         embedder,
         text,
-        maxInputChars: maxInputChars,
+        maxInputChars: safeMaxInputChars,
       );
       AppLogger.info('ai.embed_query.done', {
         'dimension': embedding.length,
@@ -492,15 +1100,22 @@ class LocalAiService {
     AppLogger.info('ai.embedder.close.done');
   }
 
-  Future<void> _ensureEmbedderSupported() async {
-    if (await supportsLocalEmbedder()) return;
+  Future<void> _ensureEmbedderSupported(
+    DownloadableEmbeddingModel model,
+  ) async {
+    if (await supportsEmbeddingModel(model)) return;
     final abis = await supportedAbis();
     AppLogger.warn('ai.embedder.unsupported_abi', {'abis': abis});
     throw UnsupportedError(
       'The current Android device ABI is ${abis.join(', ')}. '
-      'flutter_gemma embeddings require an ARM64 device because '
-      'libgemma_embedding_model_jni.so is packaged for arm64-v8a.',
+      '${model.label} requires an ARM64 device because flutter_gemma '
+      'embeddings are packaged for arm64-v8a. Use the built-in emulator '
+      'embedder for x86 emulator testing.',
     );
+  }
+
+  String _embeddingTokenizerFilename(DownloadableEmbeddingModel model) {
+    return Uri.parse(model.tokenizerUrl).pathSegments.last;
   }
 
   @visibleForTesting
@@ -623,17 +1238,18 @@ class LocalAiService {
       'hits': _hitSummaries(contextHits),
     });
     final buffer = StringBuffer()
-      ..writeln('Answer using only these local excerpts.')
+      ..writeln('Use only local excerpts.')
       ..writeln(
-        'Copy exact names, places, dates, and amounts from the matching excerpt.',
+        'Broad: synthesize relevant facts; exact sentence match not required.',
       )
       ..writeln(
-        'If the exact answer is missing, say: Not found in the local excerpts.',
+        'Exact values: copy names, places, dates, amounts, and other values.',
       )
-      ..writeln('Return one or two concise sentences.')
-      ..writeln('End with the source file name in brackets, like [notes.md].')
+      ..writeln('If no relevant facts, say: Not found in the local excerpts.')
+      ..writeln('One or two concise sentences.')
+      ..writeln('End with source file in brackets, e.g. [notes.md].')
       ..writeln(
-        'Do not cite excerpt numbers. Do not output only a citation or a raw excerpt.',
+        'No excerpt numbers; do not output only a citation or raw excerpt.',
       )
       ..writeln()
       ..writeln('Excerpts:');
@@ -1256,11 +1872,17 @@ class LocalAiService {
     }
   }
 
-  int _safeEmbeddingInputChars(int requestedMaxChars) {
+  int _safeEmbeddingInputChars(
+    int requestedMaxChars, {
+    DownloadableEmbeddingModel model = DownloadableEmbeddingModel.gecko256,
+  }) {
     if (requestedMaxChars < 1) return 1;
-    return requestedMaxChars < _maxSafeEmbeddingInputChars
-        ? requestedMaxChars
-        : _maxSafeEmbeddingInputChars;
+    final modelLimit = model.maxInputChars;
+    final hardLimit = model.requiresNetworkInstall
+        ? _maxSafeEmbeddingInputChars
+        : modelLimit;
+    if (requestedMaxChars < hardLimit) return requestedMaxChars;
+    return hardLimit;
   }
 
   int? _nextEmbeddingRetryLimit(int currentLimit, PlatformException error) {

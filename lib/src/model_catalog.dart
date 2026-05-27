@@ -1,5 +1,172 @@
 import 'package:flutter_gemma/flutter_gemma.dart';
 
+const int _decimalMb = 1000 * 1000;
+const int _decimalGb = 1000 * _decimalMb;
+
+enum GgufModelRole { chatLlm, embedding }
+
+class GgufModelFile {
+  const GgufModelFile({
+    required this.label,
+    required this.repository,
+    required this.filename,
+    required this.displaySize,
+    required this.sizeBytes,
+    required this.role,
+    required this.license,
+    this.parameterCount,
+    this.layerCount,
+    this.queryHeadCount,
+    this.kvHeadCount,
+    this.nativeContextTokens,
+    this.minEmbeddingDimensions,
+    this.maxEmbeddingDimensions,
+    this.languageSupport,
+    this.supportsThinking = false,
+  });
+
+  final String label;
+  final String repository;
+  final String filename;
+  final String displaySize;
+  final int sizeBytes;
+  final GgufModelRole role;
+  final String license;
+  final String? parameterCount;
+  final int? layerCount;
+  final int? queryHeadCount;
+  final int? kvHeadCount;
+  final int? nativeContextTokens;
+  final int? minEmbeddingDimensions;
+  final int? maxEmbeddingDimensions;
+  final String? languageSupport;
+  final bool supportsThinking;
+
+  String get id => '$repository/$filename';
+
+  String get url => 'https://huggingface.co/$repository/resolve/main/$filename';
+}
+
+class GgufModelBundle {
+  const GgufModelBundle({
+    required this.label,
+    required this.llm,
+    this.embedding,
+    required this.description,
+  });
+
+  final String label;
+  final GgufModelFile llm;
+  final GgufModelFile? embedding;
+  final String description;
+
+  int get totalSizeBytes => llm.sizeBytes + (embedding?.sizeBytes ?? 0);
+
+  double get totalSizeGb => totalSizeBytes / _decimalGb;
+
+  bool fitsStorageBudgetBytes(int storageBudgetBytes) {
+    return totalSizeBytes <= storageBudgetBytes;
+  }
+
+  bool fitsStorageBudgetGb(double storageBudgetGb) {
+    return totalSizeBytes <= storageBudgetGb * _decimalGb;
+  }
+}
+
+class RecommendedGgufModels {
+  const RecommendedGgufModels._();
+
+  static const storageBudgetBytes = 6 * _decimalGb;
+
+  static const qwen3EightBQ4KM = GgufModelFile(
+    label: 'Qwen3-8B Q4_K_M',
+    repository: 'Qwen/Qwen3-8B-GGUF',
+    filename: 'Qwen3-8B-Q4_K_M.gguf',
+    displaySize: '5.03 GB',
+    sizeBytes: 5030 * _decimalMb,
+    role: GgufModelRole.chatLlm,
+    license: 'Apache-2.0',
+    parameterCount: '8.2B',
+    layerCount: 36,
+    queryHeadCount: 32,
+    kvHeadCount: 8,
+    nativeContextTokens: 32768,
+    supportsThinking: true,
+  );
+
+  static const qwen3EightBQ5KM = GgufModelFile(
+    label: 'Qwen3-8B Q5_K_M',
+    repository: 'Qwen/Qwen3-8B-GGUF',
+    filename: 'Qwen3-8B-Q5_K_M.gguf',
+    displaySize: '5.85 GB',
+    sizeBytes: 5850 * _decimalMb,
+    role: GgufModelRole.chatLlm,
+    license: 'Apache-2.0',
+    parameterCount: '8.2B',
+    layerCount: 36,
+    queryHeadCount: 32,
+    kvHeadCount: 8,
+    nativeContextTokens: 32768,
+    supportsThinking: true,
+  );
+
+  static const qwen3FourBQ8 = GgufModelFile(
+    label: 'Qwen3-4B Q8_0',
+    repository: 'Qwen/Qwen3-4B-GGUF',
+    filename: 'Qwen3-4B-Q8_0.gguf',
+    displaySize: '4.28 GB',
+    sizeBytes: 4280 * _decimalMb,
+    role: GgufModelRole.chatLlm,
+    license: 'Apache-2.0',
+    parameterCount: '4.0B',
+    nativeContextTokens: 32768,
+    supportsThinking: true,
+  );
+
+  static const qwen3Embedding06BQ8 = GgufModelFile(
+    label: 'Qwen3-Embedding-0.6B Q8_0',
+    repository: 'Qwen/Qwen3-Embedding-0.6B-GGUF',
+    filename: 'Qwen3-Embedding-0.6B-Q8_0.gguf',
+    displaySize: '639 MB',
+    sizeBytes: 639 * _decimalMb,
+    role: GgufModelRole.embedding,
+    license: 'Apache-2.0',
+    parameterCount: '0.6B',
+    nativeContextTokens: 32768,
+    minEmbeddingDimensions: 32,
+    maxEmbeddingDimensions: 1024,
+    languageSupport: '100+ languages',
+  );
+
+  static const primaryBuild = GgufModelBundle(
+    label: 'Primary 6 GB target',
+    llm: qwen3EightBQ4KM,
+    embedding: qwen3Embedding06BQ8,
+    description:
+        'Best fit when total model storage is capped at 6 GB and both chat '
+        'generation and local semantic retrieval are required.',
+  );
+
+  static const fallbackDebugBuild = GgufModelBundle(
+    label: 'Fallback/debug target',
+    llm: qwen3FourBQ8,
+    embedding: qwen3Embedding06BQ8,
+    description:
+        'Lower-risk validation bundle for Android storage and RAM bring-up '
+        'before switching to the 8B Q4_K_M target.',
+  );
+
+  static const llmOnlyBuild = GgufModelBundle(
+    label: 'LLM-only target',
+    llm: qwen3EightBQ5KM,
+    description:
+        'Higher-quality single-file chat model under 6 GB when no separate '
+        'embedding model is installed.',
+  );
+
+  static const allBundles = [primaryBuild, fallbackDebugBuild, llmOnlyBuild];
+}
+
 enum DownloadableModel {
   qwen25OnePointFiveB(
     label: 'Local answer engine',
@@ -123,6 +290,8 @@ class LocalInferenceConfig {
   }
 }
 
+enum EmbeddingRuntime { flutterGemma, dartHash }
+
 enum DownloadableEmbeddingModel {
   gecko256(
     label: 'Semantic search engine',
@@ -138,6 +307,20 @@ enum DownloadableEmbeddingModel {
     dimension: 768,
     maxSequenceLength: 256,
     maxInputChars: 220,
+  ),
+  debugHashing(
+    label: 'Emulator semantic search',
+    size: 'Built in',
+    description:
+        'Deterministic Dart embeddings for emulator and CI retrieval tests.',
+    url: '',
+    tokenizerUrl: '',
+    iosTokenizerUrl: '',
+    filename: 'debug_hashing_v1',
+    dimension: 384,
+    maxSequenceLength: 2048,
+    maxInputChars: 1400,
+    runtime: EmbeddingRuntime.dartHash,
   );
 
   const DownloadableEmbeddingModel({
@@ -151,6 +334,7 @@ enum DownloadableEmbeddingModel {
     required this.dimension,
     required this.maxSequenceLength,
     required this.maxInputChars,
+    this.runtime = EmbeddingRuntime.flutterGemma,
   });
 
   final String label;
@@ -163,6 +347,9 @@ enum DownloadableEmbeddingModel {
   final int dimension;
   final int maxSequenceLength;
   final int maxInputChars;
+  final EmbeddingRuntime runtime;
 
   String get id => filename;
+  bool get isBuiltIn => runtime == EmbeddingRuntime.dartHash;
+  bool get requiresNetworkInstall => runtime == EmbeddingRuntime.flutterGemma;
 }

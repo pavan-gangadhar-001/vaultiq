@@ -67,16 +67,23 @@ class AppController extends ChangeNotifier {
     try {
       await store.open();
       await aiService.initialize();
-      hasLocalModel = await aiService.isModelInstalled(selectedModel);
+      hasLocalModel = await aiService.activateInstalledModel(selectedModel);
       supportedAbis = await aiService.supportedAbis();
-      supportsEmbeddingModel = await aiService.supportsLocalEmbedder();
-      hasEmbeddingModel = supportsEmbeddingModel && aiService.hasActiveEmbedder;
+      selectedEmbeddingModel = aiService.embeddingModelForAbis(supportedAbis);
+      supportsEmbeddingModel = await aiService.supportsEmbeddingModel(
+        selectedEmbeddingModel,
+      );
+      hasEmbeddingModel =
+          supportsEmbeddingModel &&
+          await aiService.activateInstalledEmbedder(selectedEmbeddingModel);
       await _refreshIndexState();
       status = dependenciesReady ? 'Ready' : 'Install local AI to begin';
       AppLogger.info('app.initialize.done', {
         'durationMs': stopwatch.elapsedMilliseconds,
         'hasAnswerEngine': hasLocalModel,
         'hasSemanticSearch': hasEmbeddingModel,
+        'semanticSearchModel': selectedEmbeddingModel.id,
+        'semanticSearchRuntime': selectedEmbeddingModel.runtime.name,
         'supportsSemanticSearch': supportsEmbeddingModel,
         'supportedAbis': supportedAbis,
         'dependenciesReady': dependenciesReady,
@@ -377,7 +384,11 @@ class AppController extends ChangeNotifier {
       if (!hasLocalModel) return;
     }
 
-    if (supportsEmbeddingModel && !hasEmbeddingModel) {
+    final missingEmbeddings = supportsEmbeddingModel
+        ? await store.countChunksMissingEmbeddings()
+        : 0;
+    if (supportsEmbeddingModel &&
+        (!hasEmbeddingModel || missingEmbeddings > 0)) {
       await installEmbeddingModel();
       if (!hasEmbeddingModel) return;
     }
@@ -471,12 +482,26 @@ class AppController extends ChangeNotifier {
       'size': selectedModel.size,
     });
     isModelBusy = true;
-    modelDownloadProgress = 0;
+    modelDownloadProgress = null;
     error = null;
-    status = 'Downloading answer engine';
+    status = 'Checking answer engine';
     notifyListeners();
 
     try {
+      if (await aiService.activateInstalledModel(selectedModel)) {
+        hasLocalModel = true;
+        modelDownloadProgress = null;
+        status = 'Answer engine ready';
+        AppLogger.info('setup.install_answer_engine.reused_installed', {
+          'durationMs': stopwatch.elapsedMilliseconds,
+          'hasAnswerEngine': hasLocalModel,
+        });
+        return;
+      }
+
+      modelDownloadProgress = 0;
+      status = 'Downloading answer engine';
+      notifyListeners();
       await aiService.installModelFromNetwork(
         model: selectedModel,
         onProgress: (progress) {
@@ -523,6 +548,7 @@ class AppController extends ChangeNotifier {
       'supportedAbis': supportedAbis,
       'label': selectedEmbeddingModel.label,
       'size': selectedEmbeddingModel.size,
+      'runtime': selectedEmbeddingModel.runtime.name,
     });
     if (!supportsEmbeddingModel) {
       error = supportedAbis.isEmpty
@@ -539,39 +565,67 @@ class AppController extends ChangeNotifier {
     var lastLoggedModelProgress = -10;
     var lastLoggedTokenizerProgress = -10;
     isEmbeddingBusy = true;
-    embeddingModelDownloadProgress = 0;
-    embeddingTokenizerDownloadProgress = 0;
+    embeddingModelDownloadProgress = null;
+    embeddingTokenizerDownloadProgress = null;
     error = null;
-    status = 'Downloading semantic search';
+    status = 'Checking semantic search';
     notifyListeners();
 
     try {
-      await aiService.installEmbedderFromNetwork(
-        model: selectedEmbeddingModel,
-        onProgress: (modelProgress, tokenizerProgress) {
-          embeddingModelDownloadProgress = modelProgress;
-          embeddingTokenizerDownloadProgress = tokenizerProgress;
-          if (modelProgress == 100 ||
-              tokenizerProgress == 100 ||
-              modelProgress - lastLoggedModelProgress >= 10 ||
-              tokenizerProgress - lastLoggedTokenizerProgress >= 10) {
-            lastLoggedModelProgress = modelProgress;
-            lastLoggedTokenizerProgress = tokenizerProgress;
-            AppLogger.info('setup.install_semantic_search.progress', {
-              'modelProgress': modelProgress,
-              'tokenizerProgress': tokenizerProgress,
-            });
-          }
-          status =
-              'Downloading semantic search '
-              '(model $modelProgress%, tokenizer $tokenizerProgress%)';
-          notifyListeners();
-        },
-      );
-      hasEmbeddingModel = aiService.hasActiveEmbedder;
-      AppLogger.info('setup.install_semantic_search.download.done', {
-        'hasSemanticSearch': hasEmbeddingModel,
-      });
+      if (await aiService.activateInstalledEmbedder(selectedEmbeddingModel)) {
+        hasEmbeddingModel = true;
+        embeddingModelDownloadProgress = null;
+        embeddingTokenizerDownloadProgress = null;
+        status = selectedEmbeddingModel.isBuiltIn
+            ? 'Emulator semantic retrieval ready'
+            : 'Semantic retrieval ready';
+        AppLogger.info('setup.install_semantic_search.reused_installed', {
+          'durationMs': stopwatch.elapsedMilliseconds,
+          'hasSemanticSearch': hasEmbeddingModel,
+          'runtime': selectedEmbeddingModel.runtime.name,
+        });
+      } else {
+        embeddingModelDownloadProgress =
+            selectedEmbeddingModel.requiresNetworkInstall ? 0 : null;
+        embeddingTokenizerDownloadProgress =
+            selectedEmbeddingModel.requiresNetworkInstall ? 0 : null;
+        status = selectedEmbeddingModel.requiresNetworkInstall
+            ? 'Downloading semantic search'
+            : 'Preparing emulator semantic search';
+        notifyListeners();
+        await aiService.installEmbedderFromNetwork(
+          model: selectedEmbeddingModel,
+          onProgress: (modelProgress, tokenizerProgress) {
+            if (selectedEmbeddingModel.requiresNetworkInstall) {
+              embeddingModelDownloadProgress = modelProgress;
+              embeddingTokenizerDownloadProgress = tokenizerProgress;
+            }
+            if (modelProgress == 100 ||
+                tokenizerProgress == 100 ||
+                modelProgress - lastLoggedModelProgress >= 10 ||
+                tokenizerProgress - lastLoggedTokenizerProgress >= 10) {
+              lastLoggedModelProgress = modelProgress;
+              lastLoggedTokenizerProgress = tokenizerProgress;
+              AppLogger.info('setup.install_semantic_search.progress', {
+                'modelProgress': modelProgress,
+                'tokenizerProgress': tokenizerProgress,
+              });
+            }
+            status = selectedEmbeddingModel.requiresNetworkInstall
+                ? 'Downloading semantic search '
+                      '(model $modelProgress%, tokenizer $tokenizerProgress%)'
+                : 'Preparing emulator semantic search';
+            notifyListeners();
+          },
+        );
+        hasEmbeddingModel = await aiService.isEmbeddingModelInstalled(
+          selectedEmbeddingModel,
+        );
+        AppLogger.info('setup.install_semantic_search.download.done', {
+          'hasSemanticSearch': hasEmbeddingModel,
+          'runtime': selectedEmbeddingModel.runtime.name,
+        });
+      }
 
       final missing = await store.countChunksMissingEmbeddings();
       AppLogger.info('setup.install_semantic_search.backfill.check', {

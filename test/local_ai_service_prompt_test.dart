@@ -67,6 +67,35 @@ void main() {
     expect(prompt, contains('archive the receipt'));
   });
 
+  test('prompt builder allows broad synthesis from relevant excerpts', () {
+    final service = LocalAiService();
+    final prompt = service.buildPromptForTesting(
+      question: 'tell me about pavan',
+      hits: [
+        _hit(
+          documentName: 'Pavan_Gangadhar__FDE.pdf',
+          content:
+              'PAVAN GANGADHAR Forward Deployed Engineer. Professional summary: AI Agent Developer and Cloud Engineer building autonomous multi-agent systems and LLM-powered applications.',
+        ),
+      ],
+      config: const LocalInferenceConfig(
+        maxTokens: 1024,
+        reservedOutputTokens: 320,
+        maxPromptHits: 1,
+        maxContextChars: 260,
+        maxExcerptChars: 260,
+      ),
+    );
+
+    expect(prompt, contains('Broad: synthesize relevant facts'));
+    expect(prompt, contains('exact sentence match not required'));
+    expect(prompt, contains('If no relevant facts'));
+    expect(prompt, isNot(contains('If the exact answer is missing')));
+    expect(prompt, contains('PAVAN GANGADHAR'));
+    expect(prompt, contains('Forward Deployed Engineer'));
+    expect(prompt, contains('Question: tell me about pavan'));
+  });
+
   test('prompt builder focuses expanded context on requested identifier', () {
     final service = LocalAiService();
     final prompt = service.buildPromptForTesting(

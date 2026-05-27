@@ -362,7 +362,9 @@ class _DependencySetupContent extends StatelessWidget {
               status: !controller.supportsEmbeddingModel
                   ? 'Unavailable on this device'
                   : controller.hasEmbeddingModel
-                  ? 'Installed'
+                  ? controller.selectedEmbeddingModel.isBuiltIn
+                        ? 'Built in for emulator'
+                        : 'Installed'
                   : semanticProgress == null
                   ? 'Required'
                   : 'Downloading ${(semanticProgress * 100).round()}%',

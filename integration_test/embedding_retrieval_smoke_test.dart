@@ -13,9 +13,14 @@ void main() {
     await ai.initialize();
 
     final supportedAbis = await ai.supportedAbis();
+    final embeddingModel = ai.embeddingModelForAbis(supportedAbis);
     // ignore: avoid_print
     print('Android supported ABIs: ${supportedAbis.join(', ')}');
-    if (!await ai.supportsLocalEmbedder()) {
+    // ignore: avoid_print
+    print(
+      'Embedding model: ${embeddingModel.label} (${embeddingModel.runtime.name})',
+    );
+    if (!await ai.supportsEmbeddingModel(embeddingModel)) {
       // ignore: avoid_print
       print(
         'Skipping real embedding generation on unsupported ABI: ${supportedAbis.join(', ')}',
@@ -24,9 +29,9 @@ void main() {
       return;
     }
 
-    if (!ai.hasActiveEmbedder) {
+    if (!await ai.isEmbeddingModelInstalled(embeddingModel)) {
       await ai.installEmbedderFromNetwork(
-        model: DownloadableEmbeddingModel.gecko256,
+        model: embeddingModel,
         onProgress: (modelProgress, tokenizerProgress) {
           // ignore: avoid_print
           print(
@@ -66,6 +71,7 @@ void main() {
             name: ['benefits.md', 'android.md', 'finance.md'][i],
             content: texts[i],
             embedding: documentEmbeddings[i],
+            embeddingModel: embeddingModel,
           ),
       ],
       queryEmbedding: queryEmbedding,
@@ -86,6 +92,7 @@ RetrievalCandidate _candidate({
   required String name,
   required String content,
   required List<double> embedding,
+  required DownloadableEmbeddingModel embeddingModel,
 }) {
   return RetrievalCandidate(
     document: IndexedDocument(
@@ -103,7 +110,7 @@ RetrievalCandidate _candidate({
       index: 0,
       content: content,
       embedding: embedding,
-      embeddingModel: DownloadableEmbeddingModel.gecko256.id,
+      embeddingModel: embeddingModel.id,
     ),
   );
 }
